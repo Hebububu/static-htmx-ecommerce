@@ -1,0 +1,18 @@
+{
+  "name": "ecommerce-static",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "cp node_modules/htmx.org/dist/htmx.min.js vendor/htmx.min.js"
+  },
+  "devDependencies": {
+    "htmx.org": "^2.0.4",
+    "terser": "^5.46.0",
+    "typescript": "^5.0.0",
+    "vite": "^7.3.1",
+    "vite-plugin-static-copy": "^3.2.0"
+  }
+}

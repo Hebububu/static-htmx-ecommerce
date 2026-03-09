@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/components/layout/footer.css" data-component-style="footer" />
+
+<div class="footer">
+<div class="footer__inner container">
+  <nav class="footer__links" aria-label="Footer navigation">
+    <a href="#" class="footer__link">Privacy Policy</a>
+    <a href="#" class="footer__link">Terms of Service</a>
+    <a href="#" class="footer__link">Contact Us</a>
+    <a href="#" class="footer__link">FAQ</a>
+  </nav>
+
+  <p class="footer__copy">
+    &copy; <span id="footer-year"></span> E-commerce. All rights reserved.
+  </p>
+</div>
+</div>
+
+<script>
+  (function () {
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear().toString();
+    }
+  })();
+</script>

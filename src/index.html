@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce</title>
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="/css/global.css" />
+
+    <!-- htmx (self-hosted via /vendor/htmx.min.js) -->
+    <script src="/vendor/htmx.min.js"></script>
+  </head>
+  <body>
+    <!-- Header component -->
+    <header
+      hx-get="/components/layout/header.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></header>
+
+    <!-- Main content (SPA page fragments load here) -->
+    <main
+      id="content"
+      hx-get="/pages/home.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></main>
+
+    <!-- Footer component -->
+    <footer
+      hx-get="/components/layout/footer.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></footer>
+
+    <!-- Modal container (modals are injected here on demand) -->
+    <div id="modal-container"></div>
+
+    <!-- Main app script (dev: /app.ts via Vite, prod: /app.js compiled) -->
+    <script type="module" src="/app.ts"></script>
+  </body>
+</html>

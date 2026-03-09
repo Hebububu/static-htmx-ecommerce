@@ -1,0 +1,120 @@
+import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { glob } from 'node:fs/promises';
+import path from 'node:path';
+
+/**
+ * Discover all TypeScript entry points under src/ (excluding type declaration files).
+ * Each .ts file becomes its own output bundle (per-component bundles).
+ */
+async function buildTsEntries(): Promise<Record<string, string>> {
+  const entries: Record<string, string> = {};
+
+  for await (const file of glob('src/**/*.ts', { exclude: (f) => f.endsWith('.d.ts') })) {
+    // e.g. src/components/layout/header.ts → components/layout/header
+    const key = file
+      .replace(/^src\//, '')
+      .replace(/\.ts$/, '');
+    entries[key] = path.resolve(file);
+  }
+
+  return entries;
+}
+
+export default defineConfig(async ({ command }) => {
+  const isProd = command === 'build';
+  const tsEntries = await buildTsEntries();
+
+  return {
+    // Vite treats src/ as the project root.
+    // All absolute paths in HTML/TS (e.g. /css/global.css) resolve from here.
+    root: 'src',
+
+    // No public dir — vendor/ lives at project root and is served separately.
+    publicDir: false,
+
+    build: {
+      outDir: '../dist',
+      emptyOutDir: true,
+
+      // Obfuscation via Terser (production only)
+      minify: isProd ? 'terser' : false,
+      terserOptions: isProd
+        ? {
+            mangle: {
+              // Mangle top-level variable/function names
+              toplevel: true,
+            },
+            compress: {
+              // Remove console.* in production
+              drop_console: true,
+              drop_debugger: true,
+              // Multiple compression passes for better results
+              passes: 2,
+            },
+            format: {
+              // Remove comments
+              comments: false,
+            },
+          }
+        : undefined,
+
+      rollupOptions: {
+        // Only compile TypeScript files — HTML/CSS are handled by static copy
+        input: tsEntries,
+        output: {
+          // Preserve directory structure: app.ts → app.js, components/layout/header.ts → components/layout/header.js
+          entryFileNames: '[name].js',
+          // No code splitting — each entry is a standalone bundle
+          chunkFileNames: 'chunks/[name]-[hash].js',
+          inlineDynamicImports: false,
+        },
+      },
+
+      // Prevent Vite from inlining small assets
+      assetsInlineLimit: 0,
+    },
+
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          // Copy index.html, rewriting /app.ts → /app.js for production
+          {
+            src: 'index.html',
+            dest: '.',
+            transform: (content: string) =>
+              content.replace(/src="\/app\.ts"/g, 'src="/app.js"'),
+          },
+          // Copy component HTML/CSS preserving directory structure
+          {
+            src: 'components',
+            dest: '.',
+          },
+          // Copy page HTML/CSS preserving directory structure
+          {
+            src: 'pages',
+            dest: '.',
+          },
+          // Copy global CSS
+          {
+            src: 'css',
+            dest: '.',
+          },
+          // Copy vendor files (htmx) from project root
+          {
+            src: '../vendor',
+            dest: '.',
+          },
+        ],
+      }),
+    ],
+
+    server: {
+      port: 3000,
+      // Allow serving files from project root (for vendor/)
+      fs: {
+        allow: ['..'],
+      },
+    },
+  };
+});

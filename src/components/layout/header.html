@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/components/layout/header.css" data-component-style="header" />
+
+<div class="header">
+<div class="header__inner container">
+  <!-- Logo -->
+  <a href="/" class="header__logo" aria-label="Go to homepage">
+    Logo
+  </a>
+
+  <!-- Navigation -->
+  <nav class="header__nav" aria-label="Main navigation">
+    <a href="#" class="header__nav-link" hx-get="/pages/home.html" hx-target="#content" hx-push-url="/">Home</a>
+    <a href="#" class="header__nav-link">Products</a>
+    <a href="#" class="header__nav-link">Event</a>
+    <a href="#" class="header__nav-link">Board</a>
+  </nav>
+
+  <!-- Actions -->
+  <div class="header__actions">
+    <button class="header__action-btn" type="button" aria-label="Search">
+      Search
+    </button>
+    <a href="#" class="header__action-btn" aria-label="Cart">
+      Cart
+    </a>
+    <a href="/pages/auth/sign-in.html" class="header__action-btn" aria-label="Sign in">
+      Sign in
+    </a>
+  </div>
+</div>
+</div>
