@@ -85,10 +85,19 @@ export default defineConfig(async ({ command }) => {
             transform: (content: string) =>
               content.replace(/src="\/app\.ts"/g, 'src="/app.js"'),
           },
-          // Copy component HTML/CSS preserving directory structure
+          // Copy component HTML files in each subdirectory.
+          // transform only works on individual files (not directories), so we use globs.
+          // Each target has dest matching the component subdirectory to preserve structure.
           {
-            src: 'components',
-            dest: '.',
+            src: 'components/layout/*.html',
+            dest: 'components/layout',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          // Copy component CSS files
+          {
+            src: 'components/layout/*.css',
+            dest: 'components/layout',
           },
           // Copy page HTML/CSS preserving directory structure
           {
