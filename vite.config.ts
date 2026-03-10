@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { glob } from 'node:fs/promises';
 import path from 'node:path';
@@ -21,7 +21,7 @@ async function buildTsEntries(): Promise<Record<string, string>> {
   return entries;
 }
 
-export default defineConfig(async ({ command }) => {
+export default defineConfig(async ({ command }): Promise<UserConfig> => {
   const isProd = command === 'build';
   const tsEntries = await buildTsEntries();
 
@@ -30,8 +30,8 @@ export default defineConfig(async ({ command }) => {
     // All absolute paths in HTML/TS (e.g. /css/global.css) resolve from here.
     root: 'src',
 
-    // No public dir — vendor/ lives at project root and is served separately.
-    publicDir: false,
+    // Serve static assets from the project-level public directory.
+    publicDir: '../public',
 
     build: {
       outDir: '../dist',
@@ -98,6 +98,30 @@ export default defineConfig(async ({ command }) => {
           {
             src: 'components/layout/*.css',
             dest: 'components/layout',
+          },
+          // Copy product component HTML files.
+          {
+            src: 'components/product/*.html',
+            dest: 'components/product',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          // Copy product component CSS files.
+          {
+            src: 'components/product/*.css',
+            dest: 'components/product',
+          },
+          // Copy banner component HTML files.
+          {
+            src: 'components/banner/*.html',
+            dest: 'components/banner',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          // Copy banner component CSS files.
+          {
+            src: 'components/banner/*.css',
+            dest: 'components/banner',
           },
           // Copy page HTML/CSS preserving directory structure
           {
