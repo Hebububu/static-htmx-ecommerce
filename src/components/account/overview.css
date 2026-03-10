@@ -1,7 +1,12 @@
 .account-overview {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
+
+/* Profile card */
 
 .account-overview__card {
   display: flex;
@@ -27,27 +32,203 @@
   color: var(--color-text-muted);
 }
 
+.account-overview__name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
 .account-overview__name {
   font-size: var(--font-size-lg, 1.125rem);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.account-overview__tier {
+  display: inline-block;
+  padding: 2px var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: #b8860b;
+  background: #fdf6e3;
+  border-radius: 999px;
+}
+
+.account-overview__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.account-overview__meta-sep {
+  color: var(--color-border);
+}
+
+/* Stats row */
+
+.account-overview__stats {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.account-overview__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+}
+
+.account-overview__stat + .account-overview__stat {
+  border-left: 1px solid var(--color-border);
+}
+
+.account-overview__stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.account-overview__stat-value {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+/* Recent orders summary */
+
+.account-overview__orders {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.account-overview__orders-header {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.account-overview__orders-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text);
   margin-bottom: var(--space-1);
 }
 
-.account-overview__email {
-  font-size: var(--font-size-sm);
+.account-overview__orders-desc {
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   margin-bottom: var(--space-1);
 }
 
-.account-overview__since {
+.account-overview__orders-range {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
 }
+
+.account-overview__orders-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.account-overview__orders-stat {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.account-overview__orders-stat strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.account-overview__promo-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-align: right;
+  line-height: 1.5;
+}
+
+.account-overview__promo-highlight {
+  color: #2563eb;
+  font-weight: var(--font-weight-bold);
+}
+
+.account-overview__promo-tier {
+  color: #2563eb;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Progress bar */
+
+.account-overview__progress-labels {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.account-overview__progress-current {
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.account-overview__progress-sep {
+  color: var(--color-text-muted);
+}
+
+.account-overview__progress-goal {
+  color: #2563eb;
+  font-weight: var(--font-weight-medium);
+}
+
+.account-overview__progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.account-overview__progress-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Responsive */
 
 @media (max-width: 639px) {
   .account-overview__card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .account-overview__name-row {
+    justify-content: center;
+  }
+
+  .account-overview__meta {
+    justify-content: center;
+  }
+
+  .account-overview__orders-body {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .account-overview__promo-text {
+    text-align: left;
   }
 }
