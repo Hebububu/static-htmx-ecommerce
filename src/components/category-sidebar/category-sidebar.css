@@ -57,6 +57,28 @@
   color: var(--color-text-muted);
 }
 
+.category-sidebar__sublist {
+  list-style: none;
+  padding: var(--space-1) 0 var(--space-1) var(--space-6);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.category-sidebar__sublink {
+  display: block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  border-radius: 6px;
+  transition: color var(--transition-fast);
+}
+
+.category-sidebar__sublink:hover {
+  color: var(--color-text);
+}
+
 /* Mobile drawer overlay */
 .category-sidebar__backdrop {
   display: none;
