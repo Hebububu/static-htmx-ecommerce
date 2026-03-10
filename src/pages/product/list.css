@@ -55,10 +55,6 @@
   font-size: var(--font-size-base);
 }
 
-.product-list__grid .product-card__stars {
-  color: #d4a017;
-}
-
 .product-list__grid .product-card__price {
   font-size: var(--font-size-xl);
 }

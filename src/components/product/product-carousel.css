@@ -100,10 +100,6 @@
   font-size: var(--font-size-base);
 }
 
-.product-carousel__slide .product-card__stars {
-  color: #d4a017;
-}
-
 .product-carousel__slide .product-card__price {
   font-size: var(--font-size-xl);
 }
