@@ -1,0 +1,53 @@
+.account-overview {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-overview__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.account-overview__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-surface, #f5f3f0);
+  display: grid;
+  place-content: center;
+  flex-shrink: 0;
+}
+
+.account-overview__avatar i {
+  font-size: 2rem;
+  color: var(--color-text-muted);
+}
+
+.account-overview__name {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.account-overview__email {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.account-overview__since {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 639px) {
+  .account-overview__card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

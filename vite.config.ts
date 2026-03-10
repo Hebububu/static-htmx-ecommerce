@@ -170,6 +170,22 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/support-sidebar',
           },
           {
+            src: 'components/account-sidebar/*.html',
+            dest: 'components/account-sidebar',
+          },
+          {
+            src: 'components/account-sidebar/*.css',
+            dest: 'components/account-sidebar',
+          },
+          {
+            src: 'components/account/*.html',
+            dest: 'components/account',
+          },
+          {
+            src: 'components/account/*.css',
+            dest: 'components/account',
+          },
+          {
             src: 'components/board/*.html',
             dest: 'components/board',
           },
@@ -222,6 +238,20 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/board/article.html',
             dest: 'pages/board',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/account/index-content.html',
+            dest: 'pages/account',
+          },
+          {
+            src: 'pages/account/index.css',
+            dest: 'pages/account',
+          },
+          {
+            src: 'pages/account/index.html',
+            dest: 'pages/account',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },

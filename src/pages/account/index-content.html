@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/components/breadcrumb/breadcrumb.css" data-component-style="breadcrumb" />
+<link rel="stylesheet" href="/pages/account/index.css" data-component-style="account-page" />
+
+<section class="account-page container" data-reveal>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a class="breadcrumb__link" href="/">Home</a>
+    <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
+    <span class="breadcrumb__current" aria-current="page">My Page</span>
+  </nav>
+
+  <h1 class="account-page__title">My Page</h1>
+
+  <div class="account-page__body">
+    <div
+      class="account-page__sidebar-slot"
+      hx-get="/components/account-sidebar/account-sidebar.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></div>
+
+    <div
+      class="account-page__content-slot"
+      hx-get="/components/account/overview.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></div>
+  </div>
+</section>
