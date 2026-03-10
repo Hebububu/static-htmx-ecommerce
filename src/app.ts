@@ -1,3 +1,5 @@
+import { initBannerSwipers } from './components/banner/swiper';
+
 // htmx types are resolved globally via src/types/htmx.d.ts (included in tsconfig.json)
 
 // ============================================================
@@ -126,9 +128,8 @@ document.body.addEventListener('htmx:afterSwap', () => {
 document.body.addEventListener('htmx:load', (event) => {
   const loadedEl = (event as HtmxLoadEvent).detail.elt;
 
-  // Process any nested htmx attributes in the loaded fragment
-  if (loadedEl && window.htmx) {
-    window.htmx.process(loadedEl);
+  if (loadedEl instanceof HTMLElement) {
+    initBannerSwipers(loadedEl);
   }
 });
 

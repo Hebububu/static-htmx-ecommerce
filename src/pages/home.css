@@ -2,17 +2,61 @@
    Home Page
    ============================================================ */
 
-.home-placeholder {
-  padding-block: var(--space-16);
+.home-banner-slot {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 
-.home-placeholder h1 {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-4);
+.home-showcase {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  background:
+    radial-gradient(circle at top left, rgba(232, 225, 215, 0.85), transparent 32%),
+    linear-gradient(180deg, #ece8e1 0%, #f7f3ee 100%);
 }
 
-.home-placeholder p {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
+.home-showcase__inner {
+  display: grid;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.home-showcase__copy {
+  max-width: 38rem;
+}
+
+.home-showcase__eyebrow {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6e624f;
+}
+
+.home-showcase h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  color: #171411;
+}
+
+.home-showcase__copy > p:last-child {
+  margin-top: var(--space-5);
+  max-width: 34rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #5f594d;
+}
+
+.home-showcase__card {
+  width: min(100%, 30rem);
+}
+
+@media (min-width: 960px) {
+  .home-showcase__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 460px);
+    justify-content: space-between;
+  }
+
+  .home-showcase__card {
+    justify-self: end;
+  }
 }

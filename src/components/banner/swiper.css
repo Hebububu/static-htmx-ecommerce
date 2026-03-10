@@ -1,0 +1,314 @@
+/* ============================================================
+   Banner Swiper Component
+   ============================================================ */
+
+.banner-swiper {
+  --banner-ratio: 16 / 9;
+  --banner-peek: clamp(1.25rem, 3vw, 3rem);
+  position: relative;
+}
+
+/*
+ * The track is wider than the viewport — it bleeds into the page gutters
+ * via negative margin so neighboring slides are visible on both sides.
+ * overflow: hidden here hides the loop's internal translateX jump.
+ */
+.banner-swiper__track {
+  overflow: hidden;
+  margin-inline: calc(var(--banner-peek) * -1);
+  padding-inline: var(--banner-peek);
+}
+
+.banner-swiper__frame {
+  position: relative;
+  /* Must be hidden so the internal loop translateX jump is never visible.
+     Side-peek effect comes from .banner-swiper__track padding, not from here. */
+  overflow: hidden;
+}
+
+.banner-swiper .swiper-wrapper {
+  display: flex;
+}
+
+/* Do NOT set width here — Swiper controls slide width via inline styles.
+   An explicit width: 100% competes with fractional slidesPerView calculations. */
+
+.banner-swiper__slide {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  min-height: 100%;
+  aspect-ratio: var(--banner-ratio);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 32px;
+  box-shadow: 0 28px 60px rgba(28, 29, 33, 0.16);
+}
+
+.banner-swiper__slide::before,
+.banner-swiper__slide::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.banner-swiper__slide::before {
+  top: -18%;
+  right: -8%;
+  width: 44%;
+  height: 52%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.42), transparent 68%);
+}
+
+.banner-swiper__slide::after {
+  bottom: -18%;
+  left: -12%;
+  width: 40%;
+  height: 46%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.24), transparent 70%);
+}
+
+.banner-swiper__slide--aurora {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.9), transparent 24%),
+    linear-gradient(135deg, #0f172d 0%, #203f63 34%, #3e8cab 62%, #d5eadf 100%);
+}
+
+.banner-swiper__slide--ember {
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255, 244, 229, 0.55), transparent 26%),
+    linear-gradient(135deg, #2c1f22 0%, #6f4f4f 32%, #d2996a 72%, #f4ede1 100%);
+}
+
+.banner-swiper__slide--mist {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.5), transparent 24%),
+    linear-gradient(135deg, #11212f 0%, #2b536d 30%, #84a9b4 62%, #eaf1f0 100%);
+}
+
+.banner-swiper__slide--dawn {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.7), transparent 22%),
+    linear-gradient(135deg, #3f2c2a 0%, #8e5f57 34%, #d8ab82 70%, #f3e6d8 100%);
+}
+
+.banner-swiper__content,
+.banner-swiper__media {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-swiper__content {
+  display: grid;
+  align-content: center;
+  gap: var(--space-5);
+  padding: clamp(1.5rem, 4vw, 4rem);
+  color: #ffffff;
+}
+
+.banner-swiper__eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.banner-swiper__title {
+  max-width: 10ch;
+  font-size: clamp(2rem, 5vw, 4.75rem);
+  line-height: 0.95;
+  font-weight: var(--font-weight-bold);
+}
+
+.banner-swiper__body {
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.banner-swiper__media {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 0;
+}
+
+.banner-swiper__media img {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  height: auto;
+  object-fit: contain;
+  transform: translateY(3%);
+  filter: drop-shadow(0 36px 48px rgba(17, 16, 22, 0.28));
+}
+
+.banner-swiper__media--offset img {
+  transform: translate(6%, 3%) scale(1.02);
+}
+
+.banner-swiper__media--compact img {
+  width: min(100%, 480px);
+}
+
+.banner-swiper__glow {
+  position: absolute;
+  inset: auto 12% 12% auto;
+  width: 48%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.32), transparent 70%);
+  filter: blur(8px);
+}
+
+.banner-swiper__chrome {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  pointer-events: none;
+}
+
+.banner-swiper__nav {
+  pointer-events: auto;
+}
+
+.banner-swiper__pagination {
+  position: absolute;
+  bottom: clamp(1rem, 3vw, 2rem);
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  background-color: rgba(14, 16, 24, 0.26);
+  backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+}
+
+.banner-swiper__pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.44);
+  opacity: 1;
+  transition: width var(--transition-fast), background-color var(--transition-fast);
+}
+
+.banner-swiper__pagination .swiper-pagination-bullet-active {
+  width: 28px;
+  background-color: #ffffff;
+}
+
+.banner-swiper__nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.banner-swiper__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background-color: rgba(14, 16, 24, 0.26);
+  color: #ffffff;
+  backdrop-filter: blur(12px);
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.banner-swiper__nav-btn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(14, 16, 24, 0.42);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.banner-swiper__nav-btn.swiper-button-disabled {
+  opacity: 0.45;
+}
+
+@media (min-width: 960px) {
+  .banner-swiper__slide {
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  }
+}
+
+@media (max-width: 959px) {
+  .banner-swiper__slide {
+    aspect-ratio: auto;
+    min-height: 620px;
+  }
+
+  .banner-swiper__content {
+    padding-bottom: var(--space-4);
+  }
+
+  .banner-swiper__media {
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .banner-swiper__media img,
+  .banner-swiper__media--offset img {
+    width: min(100%, 360px);
+    transform: translateY(0);
+  }
+
+  .banner-swiper__chrome {
+    right: var(--space-3);
+    bottom: var(--space-3);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Tighten the peek on small screens via the track, not the Swiper root.
+     Adding padding to .banner-swiper__frame would break Swiper's width measurements. */
+  .banner-swiper__track {
+    padding-inline: 0.5rem;
+  }
+
+  .banner-swiper__slide {
+    min-height: 560px;
+    border-radius: 24px;
+  }
+
+  .banner-swiper__title {
+    max-width: none;
+  }
+
+  .banner-swiper__body {
+    max-width: 28rem;
+  }
+
+  .banner-swiper__pagination {
+    bottom: var(--space-3);
+  }
+
+  .banner-swiper__nav {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-swiper__nav-btn,
+  .banner-swiper__pagination .swiper-pagination-bullet {
+    transition: none;
+  }
+}

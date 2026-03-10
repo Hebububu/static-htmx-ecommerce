@@ -1,8 +1,27 @@
 <link rel="stylesheet" href="/pages/home.css" data-component-style="home" />
 
-<section class="home-placeholder">
-  <div class="container">
-    <h1>Home page content here</h1>
-    <p>This is a placeholder for the home page. Components load above (header) and below (footer).</p>
+<section
+  class="home-banner-slot container"
+  hx-get="/components/banner/swiper.html"
+  hx-trigger="load"
+  hx-swap="innerHTML"
+></section>
+
+<section class="home-showcase">
+  <div class="container home-showcase__inner">
+    <div class="home-showcase__copy">
+      <p class="home-showcase__eyebrow">Featured product</p>
+      <h1>Product card direction for the new catalog experience.</h1>
+      <p>
+        This demo keeps the layout focused on image, product info, price, and a wishlist action.
+      </p>
+    </div>
+
+    <div
+      class="home-showcase__card"
+      hx-get="/components/product/card.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></div>
   </div>
 </section>
