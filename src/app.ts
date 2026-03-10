@@ -1,4 +1,5 @@
 import { initBannerCarousel } from './components/banner/carousel';
+import { initCategorySidebar } from './components/category-sidebar/category-sidebar';
 import { initProductCarousel } from './components/product/product-carousel';
 
 // htmx types are resolved globally via src/types/htmx.d.ts (included in tsconfig.json)
@@ -162,6 +163,7 @@ document.body.addEventListener('htmx:load', (event) => {
 
   if (loadedEl instanceof HTMLElement) {
     initBannerCarousel(loadedEl);
+    initCategorySidebar(loadedEl);
     initProductCarousel(loadedEl);
   }
 });

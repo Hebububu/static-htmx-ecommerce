@@ -146,6 +146,22 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/breadcrumb',
           },
           {
+            src: 'components/category-banner/*.html',
+            dest: 'components/category-banner',
+          },
+          {
+            src: 'components/category-banner/*.css',
+            dest: 'components/category-banner',
+          },
+          {
+            src: 'components/category-sidebar/*.html',
+            dest: 'components/category-sidebar',
+          },
+          {
+            src: 'components/category-sidebar/*.css',
+            dest: 'components/category-sidebar',
+          },
+          {
             src: 'pages/home.html',
             dest: 'pages',
           },

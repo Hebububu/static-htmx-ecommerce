@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="/pages/product/list.css" data-component-style="product-list" />
 
 <section class="product-list container" data-reveal>
+  <div
+    class="product-list__banner-slot"
+    hx-get="/components/category-banner/category-banner.html"
+    hx-trigger="load"
+    hx-swap="innerHTML"
+  ></div>
+
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a class="breadcrumb__link" href="/">Home</a>
     <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
@@ -12,427 +19,442 @@
   <div class="product-list__header">
     <h1 class="product-list__heading">Phones</h1>
     <p class="product-list__count">20 products</p>
+    <button class="product-list__filter-btn" type="button">
+      Filter
+      <i class="ph ph-faders" aria-hidden="true"></i>
+    </button>
   </div>
 
-  <div class="product-list__grid">
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View iPhone 13 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 13" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">iPhone 13</h3>
-          <p class="product-card__rating" aria-label="Rated 4.9 out of 5 from 128 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(128)</span>
-          </p>
-        </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$799</strong>
-          <button class="product-card__wish" type="button" aria-label="Add iPhone 13 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+  <div class="product-list__body">
+    <div
+      class="product-list__sidebar-slot"
+      hx-get="/components/category-sidebar/category-sidebar.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></div>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View iPhone 14 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 14" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">iPhone 14</h3>
-          <p class="product-card__rating" aria-label="Rated 4.8 out of 5 from 96 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(96)</span>
-          </p>
+    <div class="product-list__grid">
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View iPhone 13 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 13" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">iPhone 13</h3>
+            <p class="product-card__rating" aria-label="Rated 4.9 out of 5 from 128 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(128)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$799</strong>
+            <button class="product-card__wish" type="button" aria-label="Add iPhone 13 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$899</strong>
-          <button class="product-card__wish" type="button" aria-label="Add iPhone 14 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View iPhone 15 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 15" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">iPhone 15</h3>
-          <p class="product-card__rating" aria-label="Rated 4.7 out of 5 from 74 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(74)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View iPhone 14 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 14" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">iPhone 14</h3>
+            <p class="product-card__rating" aria-label="Rated 4.8 out of 5 from 96 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(96)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$899</strong>
+            <button class="product-card__wish" type="button" aria-label="Add iPhone 14 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$999</strong>
-          <button class="product-card__wish" type="button" aria-label="Add iPhone 15 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Galaxy S24 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy S24" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Galaxy S24</h3>
-          <p class="product-card__rating" aria-label="Rated 4.6 out of 5 from 112 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(112)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View iPhone 15 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 15" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">iPhone 15</h3>
+            <p class="product-card__rating" aria-label="Rated 4.7 out of 5 from 74 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(74)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$999</strong>
+            <button class="product-card__wish" type="button" aria-label="Add iPhone 15 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$849</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Galaxy S24 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Pixel 9 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 9" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Pixel 9</h3>
-          <p class="product-card__rating" aria-label="Rated 4.5 out of 5 from 89 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(89)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Galaxy S24 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy S24" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Galaxy S24</h3>
+            <p class="product-card__rating" aria-label="Rated 4.6 out of 5 from 112 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(112)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$849</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Galaxy S24 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$699</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Pixel 9 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View OnePlus 12 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="OnePlus 12" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">OnePlus 12</h3>
-          <p class="product-card__rating" aria-label="Rated 4.4 out of 5 from 67 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(67)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Pixel 9 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 9" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Pixel 9</h3>
+            <p class="product-card__rating" aria-label="Rated 4.5 out of 5 from 89 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(89)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$699</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Pixel 9 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$729</strong>
-          <button class="product-card__wish" type="button" aria-label="Add OnePlus 12 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Galaxy Z Flip 5 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy Z Flip 5" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Galaxy Z Flip 5</h3>
-          <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 54 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(54)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View OnePlus 12 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="OnePlus 12" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">OnePlus 12</h3>
+            <p class="product-card__rating" aria-label="Rated 4.4 out of 5 from 67 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(67)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$729</strong>
+            <button class="product-card__wish" type="button" aria-label="Add OnePlus 12 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$999</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Galaxy Z Flip 5 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Pixel 8a details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 8a" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Pixel 8a</h3>
-          <p class="product-card__rating" aria-label="Rated 4.5 out of 5 from 103 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(103)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Galaxy Z Flip 5 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy Z Flip 5" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Galaxy Z Flip 5</h3>
+            <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 54 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(54)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$999</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Galaxy Z Flip 5 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$499</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Pixel 8a to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View iPhone 15 Pro details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 15 Pro" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">iPhone 15 Pro</h3>
-          <p class="product-card__rating" aria-label="Rated 4.9 out of 5 from 201 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(201)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Pixel 8a details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 8a" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Pixel 8a</h3>
+            <p class="product-card__rating" aria-label="Rated 4.5 out of 5 from 103 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(103)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$499</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Pixel 8a to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$1,099</strong>
-          <button class="product-card__wish" type="button" aria-label="Add iPhone 15 Pro to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Galaxy S24 Ultra details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy S24 Ultra" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Galaxy S24 Ultra</h3>
-          <p class="product-card__rating" aria-label="Rated 4.8 out of 5 from 156 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(156)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View iPhone 15 Pro details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 15 Pro" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">iPhone 15 Pro</h3>
+            <p class="product-card__rating" aria-label="Rated 4.9 out of 5 from 201 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(201)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$1,099</strong>
+            <button class="product-card__wish" type="button" aria-label="Add iPhone 15 Pro to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$1,299</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Galaxy S24 Ultra to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Nothing Phone 2 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Nothing Phone 2" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Nothing Phone 2</h3>
-          <p class="product-card__rating" aria-label="Rated 4.2 out of 5 from 45 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(45)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Galaxy S24 Ultra details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy S24 Ultra" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Galaxy S24 Ultra</h3>
+            <p class="product-card__rating" aria-label="Rated 4.8 out of 5 from 156 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(156)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$1,299</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Galaxy S24 Ultra to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$599</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Nothing Phone 2 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Xiaomi 14 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Xiaomi 14" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Xiaomi 14</h3>
-          <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 78 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(78)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Nothing Phone 2 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Nothing Phone 2" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Nothing Phone 2</h3>
+            <p class="product-card__rating" aria-label="Rated 4.2 out of 5 from 45 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(45)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$599</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Nothing Phone 2 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$649</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Xiaomi 14 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Sony Xperia 1 V details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Sony Xperia 1 V" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Sony Xperia 1 V</h3>
-          <p class="product-card__rating" aria-label="Rated 4.1 out of 5 from 34 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(34)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Xiaomi 14 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Xiaomi 14" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Xiaomi 14</h3>
+            <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 78 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(78)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$649</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Xiaomi 14 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$1,199</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Sony Xperia 1 V to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Motorola Edge 40 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Motorola Edge 40" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Motorola Edge 40</h3>
-          <p class="product-card__rating" aria-label="Rated 4.0 out of 5 from 29 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(29)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Sony Xperia 1 V details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Sony Xperia 1 V" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Sony Xperia 1 V</h3>
+            <p class="product-card__rating" aria-label="Rated 4.1 out of 5 from 34 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(34)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$1,199</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Sony Xperia 1 V to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$549</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Motorola Edge 40 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View ASUS ROG Phone 8 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="ASUS ROG Phone 8" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">ASUS ROG Phone 8</h3>
-          <p class="product-card__rating" aria-label="Rated 4.6 out of 5 from 87 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(87)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Motorola Edge 40 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Motorola Edge 40" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Motorola Edge 40</h3>
+            <p class="product-card__rating" aria-label="Rated 4.0 out of 5 from 29 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(29)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$549</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Motorola Edge 40 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$1,099</strong>
-          <button class="product-card__wish" type="button" aria-label="Add ASUS ROG Phone 8 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Galaxy A54 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy A54" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Galaxy A54</h3>
-          <p class="product-card__rating" aria-label="Rated 4.4 out of 5 from 215 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(215)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View ASUS ROG Phone 8 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="ASUS ROG Phone 8" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">ASUS ROG Phone 8</h3>
+            <p class="product-card__rating" aria-label="Rated 4.6 out of 5 from 87 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(87)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$1,099</strong>
+            <button class="product-card__wish" type="button" aria-label="Add ASUS ROG Phone 8 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$449</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Galaxy A54 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View iPhone SE details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone SE" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">iPhone SE</h3>
-          <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 189 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(189)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Galaxy A54 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy A54" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Galaxy A54</h3>
+            <p class="product-card__rating" aria-label="Rated 4.4 out of 5 from 215 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(215)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$449</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Galaxy A54 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$429</strong>
-          <button class="product-card__wish" type="button" aria-label="Add iPhone SE to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Pixel 9 Pro details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 9 Pro" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Pixel 9 Pro</h3>
-          <p class="product-card__rating" aria-label="Rated 4.7 out of 5 from 62 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(62)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View iPhone SE details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone SE" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">iPhone SE</h3>
+            <p class="product-card__rating" aria-label="Rated 4.3 out of 5 from 189 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(189)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$429</strong>
+            <button class="product-card__wish" type="button" aria-label="Add iPhone SE to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$999</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Pixel 9 Pro to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View OnePlus Nord 3 details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="OnePlus Nord 3" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">OnePlus Nord 3</h3>
-          <p class="product-card__rating" aria-label="Rated 4.2 out of 5 from 143 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(143)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Pixel 9 Pro details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 9 Pro" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Pixel 9 Pro</h3>
+            <p class="product-card__rating" aria-label="Rated 4.7 out of 5 from 62 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(62)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$999</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Pixel 9 Pro to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$399</strong>
-          <button class="product-card__wish" type="button" aria-label="Add OnePlus Nord 3 to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="product-card">
-      <a class="product-card__media" href="#" aria-label="View Redmi Note 13 Pro details">
-        <img class="product-card__image" src="/products/iphone13.webp" alt="Redmi Note 13 Pro" loading="lazy" />
-      </a>
-      <div class="product-card__body">
-        <div class="product-card__meta">
-          <h3 class="product-card__title">Redmi Note 13 Pro</h3>
-          <p class="product-card__rating" aria-label="Rated 4.1 out of 5 from 98 reviews">
-            <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span>(98)</span>
-          </p>
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View OnePlus Nord 3 details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="OnePlus Nord 3" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">OnePlus Nord 3</h3>
+            <p class="product-card__rating" aria-label="Rated 4.2 out of 5 from 143 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(143)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$399</strong>
+            <button class="product-card__wish" type="button" aria-label="Add OnePlus Nord 3 to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <div class="product-card__footer">
-          <strong class="product-card__price">$329</strong>
-          <button class="product-card__wish" type="button" aria-label="Add Redmi Note 13 Pro to wishlist">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-          </button>
+      </article>
+
+      <article class="product-card">
+        <a class="product-card__media" href="#" aria-label="View Redmi Note 13 Pro details">
+          <img class="product-card__image" src="/products/iphone13.webp" alt="Redmi Note 13 Pro" loading="lazy" />
+        </a>
+        <div class="product-card__body">
+          <div class="product-card__meta">
+            <h3 class="product-card__title">Redmi Note 13 Pro</h3>
+            <p class="product-card__rating" aria-label="Rated 4.1 out of 5 from 98 reviews">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span>(98)</span>
+            </p>
+          </div>
+          <div class="product-card__footer">
+            <strong class="product-card__price">$329</strong>
+            <button class="product-card__wish" type="button" aria-label="Add Redmi Note 13 Pro to wishlist">
+              <i class="ph ph-heart" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   </div>
+
+  <div class="category-sidebar__backdrop"></div>
 </section>
