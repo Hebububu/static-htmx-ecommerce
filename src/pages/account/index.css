@@ -2,6 +2,12 @@
   padding-block: clamp(2rem, 5vw, 3rem);
 }
 
+.account-page__content {
+  background: #f9f8f6;
+  padding: var(--space-6);
+  border-radius: 12px;
+}
+
 .account-page__title {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--font-weight-bold);
@@ -19,9 +25,6 @@
 .account-page__content-slot {
   flex: 1;
   min-width: 0;
-  background: #f9f8f6;
-  padding: var(--space-6);
-  border-radius: 12px;
 }
 
 @media (max-width: 959px) {
