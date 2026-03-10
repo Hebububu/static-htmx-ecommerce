@@ -8,14 +8,6 @@
   border-radius: 12px;
 }
 
-.account-page__title {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin-bottom: var(--space-8);
-}
-
 .account-page__body {
   display: flex;
   gap: var(--space-10, 3rem);
