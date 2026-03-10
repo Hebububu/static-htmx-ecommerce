@@ -19,6 +19,9 @@
 .account-page__content-slot {
   flex: 1;
   min-width: 0;
+  background: #f9f8f6;
+  padding: var(--space-6);
+  border-radius: 12px;
 }
 
 @media (max-width: 959px) {
