@@ -113,3 +113,9 @@
 .banner-carousel__dot--active {
   background-color: #fff;
 }
+
+@media (max-width: 639px) {
+  .banner-carousel__slide {
+    border-radius: 0;
+  }
+}

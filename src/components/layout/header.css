@@ -34,6 +34,7 @@
    ============================================================ */
 
 .header {
+  --color-background: #f9f8f6;
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);

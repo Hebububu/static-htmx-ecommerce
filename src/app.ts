@@ -119,11 +119,42 @@ function showNetworkBanner(path: string): void {
 }
 
 // ============================================================
+// Scroll reveal
+// ============================================================
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    });
+  },
+  { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+);
+
+function observeRevealElements(root: ParentNode = document): void {
+  const elements = root instanceof HTMLElement && root.matches('[data-reveal]')
+    ? [root, ...Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))]
+    : Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
+
+  elements.forEach((el) => {
+    if (!el.classList.contains('is-visible')) {
+      revealObserver.observe(el);
+    }
+  });
+}
+
+// ============================================================
 // htmx event listeners
 // ============================================================
 
+let revealTimeout: ReturnType<typeof setTimeout>;
+
 document.body.addEventListener('htmx:afterSwap', () => {
   deduplicateComponentStyles();
+  clearTimeout(revealTimeout);
+  revealTimeout = setTimeout(() => observeRevealElements(document), 100);
 });
 
 document.body.addEventListener('htmx:load', (event) => {
