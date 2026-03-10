@@ -1,4 +1,4 @@
-import { initBannerSwipers } from './components/banner/swiper';
+import { initBannerSwipers } from './components/banner/carousel';
 
 // htmx types are resolved globally via src/types/htmx.d.ts (included in tsconfig.json)
 

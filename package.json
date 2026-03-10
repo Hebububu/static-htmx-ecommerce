@@ -9,8 +9,9 @@
     "postinstall": "cp node_modules/htmx.org/dist/htmx.min.js vendor/htmx.min.js"
   },
   "devDependencies": {
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "htmx.org": "^2.0.4",
-    "swiper": "^12.1.2",
     "terser": "^5.46.0",
     "typescript": "^5.0.0",
     "vite": "^7.3.1",

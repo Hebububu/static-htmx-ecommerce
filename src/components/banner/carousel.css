@@ -1,0 +1,82 @@
+/* Embla required styles */
+
+.banner-carousel__viewport {
+  overflow: hidden;
+}
+
+.banner-carousel__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.banner-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  max-height: 600px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: #fff;
+  border-radius: 16px;
+}
+
+/* Slide variants */
+
+.banner-carousel__slide--1 {
+  background: linear-gradient(135deg, #0f172d, #3e8cab);
+}
+
+.banner-carousel__slide--2 {
+  background: linear-gradient(135deg, #2c1f22, #d2996a);
+}
+
+.banner-carousel__slide--3 {
+  background: linear-gradient(135deg, #11212f, #84a9b4);
+}
+
+/* Navigation buttons */
+
+.banner-carousel__prev,
+.banner-carousel__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+}
+
+.banner-carousel__prev:hover,
+.banner-carousel__next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Dot buttons */
+
+.banner-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--space-3, 0.75rem);
+}
+
+.banner-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0;
+  cursor: pointer;
+}
+
+.banner-carousel__dot--active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
