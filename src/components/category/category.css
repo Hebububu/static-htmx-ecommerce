@@ -53,24 +53,38 @@
   color: #171411;
 }
 
-/* Horizontal scroll on mobile */
+/* 4×2 grid on tablet */
 
-@media (max-width: 639px) {
+@media (max-width: 959px) {
   .category__list {
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: var(--space-2);
-  }
-
-  .category__list::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
   }
 
   .category__icon {
     width: 64px;
     height: 64px;
     font-size: 1.5rem;
+  }
+}
+
+/* Smaller icons on mobile */
+
+@media (max-width: 639px) {
+  .category__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4) var(--space-2);
+  }
+
+  .category__icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.25rem;
+  }
+
+  .category__label {
+    font-size: var(--font-size-xs);
   }
 }
