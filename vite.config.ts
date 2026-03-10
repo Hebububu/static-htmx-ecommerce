@@ -133,7 +133,14 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             src: 'components/category/*.css',
             dest: 'components/category',
           },
-          // Copy page fragment HTML files (no script tags to transform)
+          {
+            src: 'components/notice-service/*.html',
+            dest: 'components/notice-service',
+          },
+          {
+            src: 'components/notice-service/*.css',
+            dest: 'components/notice-service',
+          },
           {
             src: 'pages/home.html',
             dest: 'pages',

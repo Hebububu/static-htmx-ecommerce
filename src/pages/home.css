@@ -27,6 +27,10 @@
   padding-block: clamp(2rem, 5vw, 4rem);
 }
 
+.home-notice-service {
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
 .home-showcase {
   padding-block: clamp(3.5rem, 9vw, 7rem);
   background:
