@@ -1,6 +1,4 @@
-/* ============================================================
-   Modern CSS Reset
-   ============================================================ */
+/* Reset */
 
 *,
 *::before,
@@ -64,12 +62,10 @@ button {
   border: none;
 }
 
-/* ============================================================
-   CSS Custom Properties (Design Tokens)
-   ============================================================ */
+/* Design tokens */
 
 :root {
-  /* Colors - placeholder values */
+  /* Colors */
   --color-primary: #333333;
   --color-secondary: #666666;
   --color-accent: #0066cc;
@@ -139,9 +135,7 @@ button {
   --z-toast: 500;
 }
 
-/* ============================================================
-   Base Styles
-   ============================================================ */
+/* Base styles */
 
 body {
   font-family: var(--font-family-base);
@@ -151,10 +145,6 @@ body {
   line-height: var(--line-height-base);
 }
 
-/* ============================================================
-   Layout Utilities
-   ============================================================ */
-
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -162,10 +152,7 @@ body {
   padding-inline: var(--container-padding);
 }
 
-/* ============================================================
-   Accessibility
-   ============================================================ */
-
+/* Screen-reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -178,16 +165,12 @@ body {
   border-width: 0;
 }
 
-/* Focus styles */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-/* ============================================================
-   Component Error State
-   Shown inline when a component fragment fails to load.
-   ============================================================ */
+/* Component error state — shown when a fragment fails to load */
 
 .error-state {
   display: flex;
@@ -222,11 +205,7 @@ body {
   background-color: var(--color-accent);
 }
 
-/* ============================================================
-   Network Error Banner
-   Fixed top banner for network-level failures (offline, timeout).
-   Auto-dismisses on reconnect, also manually dismissible.
-   ============================================================ */
+/* Network error banner — fixed top bar, auto-dismisses on reconnect */
 
 .network-banner {
   position: fixed;
@@ -291,11 +270,7 @@ body {
   color: #ffffff;
 }
 
-/* ============================================================
-   Scroll Reveal Animations
-   Add data-reveal to any element to fade-up on scroll.
-   Add data-reveal-stagger to a parent to stagger its children.
-   ============================================================ */
+/* Scroll reveal — data-reveal fades up, data-reveal-stagger staggers children */
 
 [data-reveal] {
   opacity: 0;
@@ -308,7 +283,7 @@ body {
   transform: translateY(0);
 }
 
-/* Stagger: each direct child animates with incremental delay */
+/* Stagger children with incremental delay */
 [data-reveal-stagger] > * {
   opacity: 0;
   transform: translateY(20px);
@@ -330,7 +305,7 @@ body {
 [data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay: 420ms; }
 [data-reveal-stagger].is-visible > *:nth-child(9) { transition-delay: 480ms; }
 
-/* Directional reveal variants */
+/* Directional variants */
 
 [data-reveal="left"] {
   opacity: 0;
@@ -350,7 +325,6 @@ body {
   transform: translateX(0);
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   [data-reveal="left"],

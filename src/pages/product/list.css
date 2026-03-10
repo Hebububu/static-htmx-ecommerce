@@ -1,12 +1,6 @@
-/* ============================================================
-   Product List Page
-   ============================================================ */
-
 .product-list {
   padding-block: clamp(2rem, 5vw, 3rem);
 }
-
-/* Header */
 
 .product-list__header {
   display: flex;
@@ -27,15 +21,13 @@
   color: var(--color-text-muted);
 }
 
-/* Grid: 4 columns on desktop */
-
 .product-list__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
 }
 
-/* Card overrides for grid context (compact, similar to carousel cards) */
+/* Card overrides — compact sizing for grid context */
 
 .product-list__grid .product-card {
   padding: var(--space-3);
@@ -81,15 +73,11 @@
   font-size: 1.2rem;
 }
 
-/* Responsive: 2 columns on tablet */
-
 @media (max-width: 959px) {
   .product-list__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* Responsive: 1 column on mobile */
 
 @media (max-width: 639px) {
   .product-list__grid {

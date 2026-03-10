@@ -1,8 +1,13 @@
-/* ============================================================
-   Ranking Product Section
-   ============================================================ */
+.ranking__heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: #171411;
+  margin-bottom: var(--space-6);
+}
 
-/* Tabs */
+/* Filter tabs */
 
 .ranking__tabs {
   display: flex;
@@ -28,18 +33,7 @@
   border-color: #171411;
 }
 
-/* Heading */
-
-.ranking__heading {
-  text-align: center;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.02em;
-  color: #171411;
-  margin-bottom: var(--space-6);
-}
-
-/* Grid */
+/* Responsive grid */
 
 .ranking__grid {
   display: grid;
@@ -60,8 +54,6 @@
   }
 }
 
-/* Item */
-
 .ranking__item {
   display: flex;
   align-items: flex-start;
@@ -77,8 +69,6 @@
 .ranking__item:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
-
-/* Image */
 
 .ranking__image {
   flex-shrink: 0;
@@ -96,8 +86,6 @@
   display: block;
 }
 
-/* Rank number */
-
 .ranking__rank {
   flex-shrink: 0;
   font-size: clamp(1.25rem, 2vw, 1.5rem);
@@ -107,13 +95,12 @@
   min-width: 1.5rem;
 }
 
-/* Info */
-
 .ranking__info {
   flex: 1;
   min-width: 0;
 }
 
+/* Title clamped to 2 lines */
 .ranking__title {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -150,8 +137,6 @@
   font-weight: var(--font-weight-bold);
   color: #171411;
 }
-
-/* Responsive image sizing */
 
 @media (max-width: 639px) {
   .ranking__image {

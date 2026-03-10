@@ -1,12 +1,3 @@
-/* ============================================================
-   Header Component
-   BEM methodology, mobile-first
-   ============================================================ */
-
-/* ============================================================
-   Banner scroll animation
-   ============================================================ */
-
 @keyframes banner-scroll {
   0%,
   22% {
@@ -29,10 +20,6 @@
   }
 }
 
-/* ============================================================
-   Root element
-   ============================================================ */
-
 .header {
   --color-background: #f9f8f6;
   position: sticky;
@@ -43,9 +30,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-/* ============================================================
-   Layer 1: Promo banner
-   ============================================================ */
+/* Promo banner — CSS-only vertical rotation, 4 slides */
 
 .header__banner {
   height: 40px;
@@ -75,9 +60,7 @@
   padding-inline: var(--space-4);
 }
 
-/* ============================================================
-   Layer 2: Top utility bar (desktop only)
-   ============================================================ */
+/* Top utility bar (desktop only) */
 
 .header__topbar {
   display: none;
@@ -115,9 +98,7 @@
   pointer-events: none;
 }
 
-/* ============================================================
-   Layer 3: Main row
-   ============================================================ */
+/* Main row */
 
 .header__main-inner {
   display: flex;
@@ -126,7 +107,6 @@
   gap: var(--space-2);
 }
 
-/* Logo */
 .header__logo {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -184,13 +164,12 @@
   color: var(--color-accent);
 }
 
-/* Expandable search (tablet/mobile — toggled by JS) */
+/* Expandable search (tablet/mobile, toggled by JS) */
 .header__search-expand {
   border-top: 1px solid var(--color-border);
   padding-block: var(--space-3);
 }
 
-/* hidden attr makes it display:none; removing it reveals the panel */
 .header__search-expand[hidden] {
   display: none;
 }
@@ -236,7 +215,8 @@
   color: var(--color-accent);
 }
 
-/* Action icon group */
+/* Action icons */
+
 .header__actions {
   display: flex;
   align-items: center;
@@ -244,7 +224,6 @@
   flex-shrink: 0;
 }
 
-/* Base action button */
 .header__action-btn {
   display: flex;
   align-items: center;
@@ -260,9 +239,6 @@
 .header__action-btn:hover {
   color: var(--color-accent);
 }
-
-/* Hamburger: visible on mobile/tablet, hidden on desktop */
-/* Search icon: visible on mobile/tablet, hidden on desktop */
 
 /* Cart badge */
 .header__action-btn--cart {
@@ -286,9 +262,7 @@
   justify-content: center;
 }
 
-/* ============================================================
-   Layer 4: Category navigation (desktop only)
-   ============================================================ */
+/* Category navigation (desktop only) */
 
 .header__nav {
   display: none;
@@ -320,7 +294,7 @@
   color: var(--color-accent);
 }
 
-/* Caret icon rotates on hover */
+/* Caret rotates on hover to indicate dropdown */
 .header__nav-caret {
   font-size: 0.75rem;
   transition: transform var(--transition-fast);
@@ -331,7 +305,7 @@
   transform: rotate(180deg);
 }
 
-/* Dropdown menu */
+/* Dropdown */
 .header__nav-dropdown {
   display: none;
   position: absolute;
@@ -364,9 +338,7 @@
   color: var(--color-accent);
 }
 
-/* ============================================================
-   Mobile / Tablet Drawer
-   ============================================================ */
+/* Mobile/tablet drawer */
 
 .header__drawer {
   position: fixed;
@@ -379,7 +351,6 @@
   pointer-events: auto;
 }
 
-/* Backdrop */
 .header__drawer-backdrop {
   position: absolute;
   inset: 0;
@@ -392,7 +363,6 @@
   opacity: 1;
 }
 
-/* Drawer panel */
 .header__drawer-inner {
   position: absolute;
   top: 0;
@@ -408,7 +378,7 @@
   overflow-y: auto;
 }
 
-/* Transitions enabled after JS initialisation — prevents flash on page load */
+/* Transitions enabled after JS init to prevent flash on page load */
 .header__drawer--ready .header__drawer-inner {
   transition: transform var(--transition-base);
 }
@@ -420,7 +390,6 @@
   transform: translateX(0);
 }
 
-/* Close button */
 .header__drawer-close {
   align-self: flex-end;
   padding: var(--space-4);
@@ -433,7 +402,6 @@
   color: var(--color-accent);
 }
 
-/* Drawer nav */
 .header__drawer-nav {
   flex: 1;
   padding-inline: var(--space-4);
@@ -454,7 +422,6 @@
   color: var(--color-accent);
 }
 
-/* Caret icon in drawer */
 .header__drawer-nav-caret {
   font-size: 0.875rem;
   transition: transform var(--transition-fast);
@@ -466,7 +433,7 @@
   transform: rotate(180deg);
 }
 
-/* Accordion children */
+/* Accordion children in drawer */
 .header__drawer-nav-children {
   display: none;
   padding-left: var(--space-4);
@@ -488,7 +455,6 @@
   color: var(--color-accent);
 }
 
-/* Drawer utility links */
 .header__drawer-utils {
   padding: var(--space-4);
   border-top: 1px solid var(--color-border);
@@ -507,17 +473,14 @@
   color: var(--color-text);
 }
 
-/* ============================================================
-   Responsive: Desktop (≥ 1200px)
-   ============================================================ */
+/* Desktop breakpoint */
 
 @media (min-width: 1200px) {
-  /* Show top utility bar */
   .header__topbar {
     display: block;
   }
 
-  /* Grid: logo | search (centered) | actions — equal outer columns guarantee centering */
+  /* Grid: logo | search (centered) | actions */
   .header__main-inner {
     display: grid;
     grid-template-columns: 160px 1fr 160px;
@@ -528,19 +491,16 @@
     margin-right: 0;
   }
 
-  /* Show inline search — centered within its 1fr column */
   .header__search {
     display: flex;
     width: 100%;
     margin-inline: auto;
   }
 
-  /* Actions pushed to the right edge of their column */
   .header__actions {
     justify-content: flex-end;
   }
 
-  /* Hide mobile-only action buttons */
   .header__action-btn--hamburger {
     display: none;
   }
@@ -549,7 +509,6 @@
     display: none;
   }
 
-  /* Show desktop nav */
   .header__nav {
     display: block;
   }

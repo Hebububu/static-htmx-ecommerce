@@ -2,10 +2,7 @@
 
 <div class="header" id="site-header">
 
-  <!-- ============================================================
-       Layer 1: Promo Banner
-       CSS-only vertical rotation, 4 slides × 3s each
-       ============================================================ -->
+  <!-- Promo banner — CSS-only vertical rotation -->
   <div class="header__banner" aria-label="Promotions">
     <div class="header__banner-track" aria-hidden="true">
       <div class="header__banner-slide">Free shipping on all orders over $50 — shop now</div>
@@ -15,9 +12,7 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       Layer 2: Top utility bar (desktop only)
-       ============================================================ -->
+  <!-- Top utility bar (desktop only) -->
   <div class="header__topbar">
     <div class="header__topbar-inner container">
       <nav class="header__topbar-nav" aria-label="Utility navigation">
@@ -28,13 +23,10 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       Layer 3: Main row — hamburger / logo / search / actions
-       ============================================================ -->
+  <!-- Main row -->
   <div class="header__main">
     <div class="header__main-inner container">
 
-      <!-- Hamburger (tablet/mobile only) -->
       <button
         class="header__action-btn header__action-btn--hamburger"
         type="button"
@@ -45,10 +37,8 @@
         <i class="ph ph-list" aria-hidden="true"></i>
       </button>
 
-      <!-- Logo -->
       <a href="/" class="header__logo" aria-label="Go to homepage">Logo</a>
 
-      <!-- Search bar (desktop inline) -->
       <form
         class="header__search"
         role="search"
@@ -68,10 +58,8 @@
         </button>
       </form>
 
-      <!-- Action icons -->
       <div class="header__actions">
 
-        <!-- Search icon (tablet/mobile only) -->
         <button
           class="header__action-btn header__action-btn--search"
           type="button"
@@ -82,7 +70,6 @@
           <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
         </button>
 
-        <!-- My account -->
         <a
           class="header__action-btn header__action-btn--my"
           href="/pages/auth/sign-in.html"
@@ -91,7 +78,6 @@
           <i class="ph ph-user" aria-hidden="true"></i>
         </a>
 
-        <!-- Cart -->
         <a
           class="header__action-btn header__action-btn--cart"
           href="/pages/cart/index.html"
@@ -104,7 +90,7 @@
       </div>
     </div>
 
-    <!-- Expandable search (tablet/mobile — slides down on search icon click) -->
+    <!-- Expandable search (tablet/mobile, slides down on icon click) -->
     <div class="header__search-expand" id="header-search-expand" hidden>
       <form
         class="header__search-expand-form container"
@@ -127,25 +113,16 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       Layer 4: Category navigation (desktop only)
-       Items are injected by header.ts from navItems data array
-       ============================================================ -->
+  <!-- Category navigation (desktop only, rendered by header.ts) -->
   <nav class="header__nav" aria-label="Main navigation">
     <div class="header__nav-inner container">
-      <ul class="header__nav-list" id="header-nav-list">
-        <!-- Rendered by header.ts -->
-      </ul>
+      <ul class="header__nav-list" id="header-nav-list"></ul>
     </div>
   </nav>
 
-
 </div>
 
-<!-- ============================================================
-     Mobile/Tablet Drawer
-     Outside .header but inside the htmx-loaded fragment
-     ============================================================ -->
+<!-- Mobile/tablet drawer -->
 <div class="header__drawer" id="header-drawer" aria-hidden="true">
   <div class="header__drawer-backdrop"></div>
   <div
@@ -158,12 +135,9 @@
       <i class="ph ph-x" aria-hidden="true"></i>
     </button>
 
+    <!-- Drawer nav (rendered by header.ts) -->
     <nav class="header__drawer-nav" aria-label="Mobile navigation">
-      <ul class="header__drawer-nav-list" id="header-drawer-nav-list">
-        <!-- Rendered by header.ts
-             Items with children get class header__drawer-nav-item--has-children (JS selector hook only, no CSS rule)
-             and header__drawer-nav-item--open toggled by accordion click handler -->
-      </ul>
+      <ul class="header__drawer-nav-list" id="header-drawer-nav-list"></ul>
     </nav>
 
     <div class="header__drawer-utils">
