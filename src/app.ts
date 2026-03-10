@@ -1,4 +1,5 @@
-import { initBannerSwipers } from './components/banner/carousel';
+import { initBannerCarousel } from './components/banner/carousel';
+import { initProductCarousel } from './components/product/product-carousel';
 
 // htmx types are resolved globally via src/types/htmx.d.ts (included in tsconfig.json)
 
@@ -129,7 +130,8 @@ document.body.addEventListener('htmx:load', (event) => {
   const loadedEl = (event as HtmxLoadEvent).detail.elt;
 
   if (loadedEl instanceof HTMLElement) {
-    initBannerSwipers(loadedEl);
+    initBannerCarousel(loadedEl);
+    initProductCarousel(loadedEl);
   }
 });
 

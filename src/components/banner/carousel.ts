@@ -1,6 +1,63 @@
 import EmblaCarousel, { type EmblaCarouselType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
+const PARALLAX_FACTOR = 0.5;
+
+function setupTweenParallax(emblaApi: EmblaCarouselType): void {
+  let tweenNodes: HTMLElement[] = [];
+  let tweenFactor = 0;
+
+  function setNodes(): void {
+    tweenNodes = emblaApi.slideNodes().map(
+      (slide) => slide.querySelector('.banner-carousel__parallax') as HTMLElement,
+    );
+  }
+
+  function setFactor(): void {
+    tweenFactor = PARALLAX_FACTOR * emblaApi.scrollSnapList().length;
+  }
+
+  function tweenParallax(): void {
+    const engine = emblaApi.internalEngine();
+    const scrollProgress = emblaApi.scrollProgress();
+    const slidesInView = emblaApi.slidesInView();
+
+    emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
+      let diffToTarget = scrollSnap - scrollProgress;
+      const slidesInSnap = engine.slideRegistry[snapIndex];
+
+      slidesInSnap.forEach((slideIndex: number) => {
+        if (!slidesInView.includes(slideIndex)) return;
+
+        if (engine.options.loop) {
+          engine.slideLooper.loopPoints.forEach((loopItem) => {
+            const target = loopItem.target();
+            if (slideIndex === loopItem.index && target !== 0) {
+              const sign = Math.sign(target);
+              if (sign === -1) diffToTarget = scrollSnap - (1 + scrollProgress);
+              if (sign === 1) diffToTarget = scrollSnap + (1 - scrollProgress);
+            }
+          });
+        }
+
+        const translate = diffToTarget * (-1 * tweenFactor) * 100;
+        tweenNodes[slideIndex].style.transform = `translateX(${translate}%)`;
+      });
+    });
+  }
+
+  setNodes();
+  setFactor();
+  tweenParallax();
+
+  emblaApi
+    .on('reInit', setNodes)
+    .on('reInit', setFactor)
+    .on('reInit', tweenParallax)
+    .on('scroll', tweenParallax)
+    .on('slideFocus', tweenParallax);
+}
+
 function setupDots(emblaApi: EmblaCarouselType, dotsNode: HTMLElement): void {
   let dotNodes: HTMLButtonElement[] = [];
 
@@ -42,16 +99,20 @@ function mountCarousel(wrapper: HTMLElement): void {
   const emblaApi = EmblaCarousel(
     viewport,
     { loop: true },
-    [Autoplay({ delay: 4500 })],
+    [Autoplay({
+      delay: 4500,
+      rootNode: () => wrapper,
+    })],
   );
 
+  setupTweenParallax(emblaApi);
   prevBtn.addEventListener('click', () => emblaApi.scrollPrev());
   nextBtn.addEventListener('click', () => emblaApi.scrollNext());
   setupDots(emblaApi, dotsNode);
   emblaApi.plugins().autoplay?.play();
 }
 
-export function initBannerSwipers(root: ParentNode = document): void {
+export function initBannerCarousel(root: ParentNode = document): void {
   const elements = root instanceof HTMLElement && root.matches('.js-banner-carousel')
     ? [root]
     : Array.from(root.querySelectorAll<HTMLElement>('.js-banner-carousel'));
