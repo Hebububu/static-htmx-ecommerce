@@ -215,6 +215,16 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },
+          {
+            src: 'pages/board/article-content.html',
+            dest: 'pages/board',
+          },
+          {
+            src: 'pages/board/article.html',
+            dest: 'pages/board',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
           // Copy global CSS
           {
             src: 'css',
