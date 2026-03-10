@@ -10,6 +10,13 @@
 </section>
 
 <section
+  class="home-category container"
+  hx-get="/components/category/category.html"
+  hx-trigger="load"
+  hx-swap="innerHTML"
+></section>
+
+<section
   class="home-product-carousel container"
   data-reveal
   hx-get="/components/product/product-carousel.html"

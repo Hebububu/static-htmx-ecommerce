@@ -19,6 +19,10 @@
   }
 }
 
+.home-category {
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+
 .home-product-carousel {
   padding-block: clamp(2rem, 5vw, 4rem);
 }
