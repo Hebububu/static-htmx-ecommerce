@@ -142,6 +142,10 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/notice-service',
           },
           {
+            src: 'components/breadcrumb/*.css',
+            dest: 'components/breadcrumb',
+          },
+          {
             src: 'pages/home.html',
             dest: 'pages',
           },
