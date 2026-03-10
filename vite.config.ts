@@ -123,10 +123,40 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             src: 'components/banner/*.css',
             dest: 'components/banner',
           },
-          // Copy page HTML/CSS preserving directory structure
+          // Copy category component HTML files.
           {
-            src: 'pages',
-            dest: '.',
+            src: 'components/category/*.html',
+            dest: 'components/category',
+          },
+          // Copy category component CSS files.
+          {
+            src: 'components/category/*.css',
+            dest: 'components/category',
+          },
+          // Copy page fragment HTML files (no script tags to transform)
+          {
+            src: 'pages/home.html',
+            dest: 'pages',
+          },
+          {
+            src: 'pages/home.css',
+            dest: 'pages',
+          },
+          // Copy product list content fragment
+          {
+            src: 'pages/product/list-content.html',
+            dest: 'pages/product',
+          },
+          {
+            src: 'pages/product/list.css',
+            dest: 'pages/product',
+          },
+          // Copy product list full page (rewrite .ts → .js)
+          {
+            src: 'pages/product/list.html',
+            dest: 'pages/product',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },
           // Copy global CSS
           {
