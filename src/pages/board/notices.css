@@ -2,6 +2,12 @@
   padding-block: clamp(2rem, 5vw, 3rem);
 }
 
+.notices__content {
+  background: #f9f8f6;
+  padding: var(--space-6);
+  border-radius: 12px;
+}
+
 .notices__page-title {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: var(--font-weight-bold);

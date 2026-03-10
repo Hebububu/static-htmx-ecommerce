@@ -10,21 +10,23 @@
     <span class="breadcrumb__current" aria-current="page">Announcements</span>
   </nav>
 
-  <h1 class="notices__page-title">Support</h1>
+  <div class="notices__content">
+    <h1 class="notices__page-title">Support</h1>
 
-  <div class="notices__body">
-    <div
-      class="notices__sidebar-slot"
-      hx-get="/components/support-sidebar/support-sidebar.html"
-      hx-trigger="load"
-      hx-swap="innerHTML"
-    ></div>
+    <div class="notices__body">
+      <div
+        class="notices__sidebar-slot"
+        hx-get="/components/support-sidebar/support-sidebar.html"
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      ></div>
 
-    <div
-      class="notices__board-slot"
-      hx-get="/components/board/board.html"
-      hx-trigger="load"
-      hx-swap="innerHTML"
-    ></div>
+      <div
+        class="notices__board-slot"
+        hx-get="/components/board/board.html"
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      ></div>
+    </div>
   </div>
 </section>
