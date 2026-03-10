@@ -1,0 +1,121 @@
+/* Embla required styles */
+
+.product-carousel__viewport {
+  overflow: hidden;
+}
+
+.product-carousel__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--space-4, 1rem) / -2);
+  margin-right: calc(var(--space-4, 1rem) / -2);
+}
+
+.product-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  padding-left: calc(var(--space-4, 1rem) / 2);
+  padding-right: calc(var(--space-4, 1rem) / 2);
+}
+
+@media (min-width: 640px) {
+  .product-carousel__slide {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 960px) {
+  .product-carousel__slide {
+    flex: 0 0 25%;
+  }
+}
+
+/* Header */
+
+.product-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6, 1.5rem);
+}
+
+.product-carousel__heading {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-bold, 700);
+  letter-spacing: -0.02em;
+  color: #171411;
+}
+
+/* Navigation buttons */
+
+.product-carousel__nav {
+  display: flex;
+  gap: var(--space-2, 0.5rem);
+}
+
+.product-carousel__prev,
+.product-carousel__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  background: none;
+  color: #171411;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.product-carousel__prev:hover,
+.product-carousel__next:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.24);
+}
+
+/* Card overrides for carousel context */
+
+.product-carousel__slide .product-card {
+  height: 100%;
+  padding: var(--space-3);
+  gap: var(--space-3);
+  border-radius: 16px;
+}
+
+.product-carousel__slide .product-card__body {
+  grid-template-rows: 1fr auto;
+}
+
+.product-carousel__slide .product-card:hover {
+  transform: none;
+  box-shadow: 0 12px 32px rgba(84, 69, 55, 0.14);
+}
+
+.product-carousel__slide .product-card__media {
+  border-radius: 12px;
+}
+
+.product-carousel__slide .product-card__title {
+  font-size: var(--font-size-base);
+}
+
+.product-carousel__slide .product-card__stars {
+  color: #d4a017;
+}
+
+.product-carousel__slide .product-card__price {
+  font-size: var(--font-size-xl);
+}
+
+.product-carousel__slide .product-card__wish {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.product-carousel__slide .product-card__wish i {
+  font-size: 1.2rem;
+}

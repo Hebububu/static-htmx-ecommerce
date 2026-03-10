@@ -7,6 +7,10 @@
   padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 
+.home-product-carousel {
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
 .home-showcase {
   padding-block: clamp(3.5rem, 9vw, 7rem);
   background:
