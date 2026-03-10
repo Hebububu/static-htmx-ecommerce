@@ -162,6 +162,22 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/category-sidebar',
           },
           {
+            src: 'components/support-sidebar/*.html',
+            dest: 'components/support-sidebar',
+          },
+          {
+            src: 'components/support-sidebar/*.css',
+            dest: 'components/support-sidebar',
+          },
+          {
+            src: 'components/board/*.html',
+            dest: 'components/board',
+          },
+          {
+            src: 'components/board/*.css',
+            dest: 'components/board',
+          },
+          {
             src: 'pages/home.html',
             dest: 'pages',
           },
@@ -182,6 +198,20 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/product/list.html',
             dest: 'pages/product',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/board/notices-content.html',
+            dest: 'pages/board',
+          },
+          {
+            src: 'pages/board/notices.css',
+            dest: 'pages/board',
+          },
+          {
+            src: 'pages/board/notices.html',
+            dest: 'pages/board',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },
