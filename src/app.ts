@@ -1,6 +1,10 @@
 import { initBannerCarousel } from './components/banner/carousel';
 import { initCategorySidebar } from './components/category-sidebar/category-sidebar';
+import { initEventListCountdown } from './components/event-list/event-list';
 import { initProductCarousel } from './components/product/product-carousel';
+import { initProductDetail } from './components/product-detail/product-detail';
+import { initQuickMenu } from './components/quick-menu/quick-menu';
+import { initReviewCarousel } from './components/review/review';
 
 // htmx types are resolved globally via src/types/htmx.d.ts (included in tsconfig.json)
 
@@ -164,7 +168,11 @@ document.body.addEventListener('htmx:load', (event) => {
   if (loadedEl instanceof HTMLElement) {
     initBannerCarousel(loadedEl);
     initCategorySidebar(loadedEl);
+    initEventListCountdown();
     initProductCarousel(loadedEl);
+    initProductDetail(loadedEl);
+    initQuickMenu(loadedEl);
+    initReviewCarousel(loadedEl);
   }
 });
 

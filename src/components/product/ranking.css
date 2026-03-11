@@ -37,15 +37,9 @@
 
 .ranking__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
   min-height: 200px;
-}
-
-@media (min-width: 640px) {
-  .ranking__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (min-width: 960px) {
@@ -55,6 +49,7 @@
 }
 
 .ranking__item {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
@@ -64,6 +59,30 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: box-shadow 0.2s;
+}
+
+.ranking__wish {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #312a23;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.ranking__wish:hover {
+  color: #a04545;
+  border-color: rgba(160, 69, 69, 0.32);
+  background-color: #fff8f7;
 }
 
 .ranking__item:hover {
@@ -139,7 +158,22 @@
 }
 
 @media (max-width: 639px) {
+  .ranking__item {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
   .ranking__image {
-    width: 100px;
+    width: 100%;
+  }
+
+  .ranking__rank {
+    order: -1;
+    font-size: var(--font-size-sm);
+    color: #999;
+  }
+
+  .ranking__title {
+    font-size: var(--font-size-xs);
   }
 }

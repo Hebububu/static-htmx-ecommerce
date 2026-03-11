@@ -5,28 +5,18 @@
 .product-carousel__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
-  margin-left: calc(var(--space-4, 1rem) / -2);
-  margin-right: calc(var(--space-4, 1rem) / -2);
+  gap: var(--space-3, 0.75rem);
 }
 
-/* Padding-based gaps for Embla loop mode (CSS gap breaks at loop boundary) */
 .product-carousel__slide {
-  flex: 0 0 100%;
+  flex: 0 0 calc((100% - var(--space-3, 0.75rem) * 3) / 4);
   min-width: 0;
   display: flex;
-  padding-left: calc(var(--space-4, 1rem) / 2);
-  padding-right: calc(var(--space-4, 1rem) / 2);
 }
 
-@media (min-width: 640px) {
+@media (max-width: 959px) {
   .product-carousel__slide {
-    flex: 0 0 50%;
-  }
-}
-
-@media (min-width: 960px) {
-  .product-carousel__slide {
-    flex: 0 0 25%;
+    flex: 0 0 calc((100% - var(--space-3, 0.75rem)) / 2);
   }
 }
 

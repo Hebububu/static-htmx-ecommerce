@@ -127,7 +127,19 @@
   color: #171411;
 }
 
-/* Responsive: stack on mobile */
+@media (max-width: 959px) {
+  .notice-service__icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .notice-service__icon-circle {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+}
 
 @media (max-width: 639px) {
   .notice-service {

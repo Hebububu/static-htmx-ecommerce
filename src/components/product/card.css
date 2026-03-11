@@ -88,6 +88,30 @@
   color: #171411;
 }
 
+.product-card__pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-card__original-price {
+  font-size: var(--font-size-xs);
+  color: #999;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+.product-card__discount {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: #c0392b;
+  line-height: 1;
+}
+
+.product-card__pricing .product-card__price {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
 .product-card__wish {
   display: inline-flex;
   align-items: center;

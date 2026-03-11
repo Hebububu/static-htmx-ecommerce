@@ -34,7 +34,7 @@ const navItems: NavItem[] = [
     label: 'Board',
     href: '/pages/board/list.html',
     children: [
-      { label: 'Notice', href: '/pages/board/list.html?type=notice' },
+      { label: 'Notice', href: '/pages/board/notices.html' },
       { label: 'FAQ', href: '/pages/board/list.html?type=faq' },
     ],
   },
@@ -62,15 +62,15 @@ function renderNav(): void {
       const dropdownHtml = hasChildren
         ? `<ul class="header__nav-dropdown" role="menu">
             ${item.children!
-              .map(
-                (child) =>
-                  `<li class="header__nav-dropdown-item" role="none">
+          .map(
+            (child) =>
+              `<li class="header__nav-dropdown-item" role="none">
                     <a class="header__nav-dropdown-link" href="${child.href}" role="menuitem">
                       ${child.label}
                     </a>
                   </li>`
-              )
-              .join('')}
+          )
+          .join('')}
           </ul>`
         : '';
 
@@ -101,15 +101,15 @@ function renderDrawerNav(): void {
       const childrenHtml = hasChildren
         ? `<ul class="header__drawer-nav-children">
             ${item.children!
-              .map(
-                (child) =>
-                  `<li>
+          .map(
+            (child) =>
+              `<li>
                     <a class="header__drawer-nav-child-link" href="${child.href}">
                       ${child.label}
                     </a>
                   </li>`
-              )
-              .join('')}
+          )
+          .join('')}
           </ul>`
         : '';
 

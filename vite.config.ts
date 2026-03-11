@@ -111,6 +111,14 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             src: 'components/product/*.css',
             dest: 'components/product',
           },
+          {
+            src: 'components/product-detail/*.html',
+            dest: 'components/product-detail',
+          },
+          {
+            src: 'components/product-detail/*.css',
+            dest: 'components/product-detail',
+          },
           // Copy banner component HTML files.
           {
             src: 'components/banner/*.html',
@@ -186,6 +194,38 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/account',
           },
           {
+            src: 'components/review/*.html',
+            dest: 'components/review',
+          },
+          {
+            src: 'components/review/*.css',
+            dest: 'components/review',
+          },
+          {
+            src: 'components/quick-menu/*.html',
+            dest: 'components/quick-menu',
+          },
+          {
+            src: 'components/quick-menu/*.css',
+            dest: 'components/quick-menu',
+          },
+          {
+            src: 'components/event-banner/*.html',
+            dest: 'components/event-banner',
+          },
+          {
+            src: 'components/event-banner/*.css',
+            dest: 'components/event-banner',
+          },
+          {
+            src: 'components/event-list/*.html',
+            dest: 'components/event-list',
+          },
+          {
+            src: 'components/event-list/*.css',
+            dest: 'components/event-list',
+          },
+          {
             src: 'components/board/*.html',
             dest: 'components/board',
           },
@@ -213,6 +253,20 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           // Copy product list full page (rewrite .ts → .js)
           {
             src: 'pages/product/list.html',
+            dest: 'pages/product',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/product/detail-content.html',
+            dest: 'pages/product',
+          },
+          {
+            src: 'pages/product/detail.css',
+            dest: 'pages/product',
+          },
+          {
+            src: 'pages/product/detail.html',
             dest: 'pages/product',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
@@ -252,6 +306,34 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/account/index.html',
             dest: 'pages/account',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/event/event-content.html',
+            dest: 'pages/event',
+          },
+          {
+            src: 'pages/event/event.css',
+            dest: 'pages/event',
+          },
+          {
+            src: 'pages/event/event.html',
+            dest: 'pages/event',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/event/list-content.html',
+            dest: 'pages/event',
+          },
+          {
+            src: 'pages/event/list.css',
+            dest: 'pages/event',
+          },
+          {
+            src: 'pages/event/list.html',
+            dest: 'pages/event',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },

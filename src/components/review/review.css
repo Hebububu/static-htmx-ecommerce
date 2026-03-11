@@ -1,0 +1,234 @@
+.review__heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  color: #171411;
+  margin-bottom: var(--space-8);
+}
+
+.review__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.review__subheading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: #171411;
+}
+
+.review__nav {
+  display: none;
+}
+
+.review__prev,
+.review__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  background: none;
+  color: #171411;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.review__prev:hover,
+.review__next:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.24);
+}
+
+.review__best {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.review__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+@media (min-width: 960px) {
+  .review__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.review__card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+}
+
+.review__card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.review__photo {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f4f2ee;
+  margin-bottom: var(--space-3);
+}
+
+.review__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.review__thumbs {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #7c3aed;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review__stars {
+  margin-bottom: var(--space-2);
+}
+
+.review__stars-icons {
+  display: inline-flex;
+  gap: 2px;
+  color: #d4a017;
+  font-size: var(--font-size-sm);
+}
+
+.review__text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: #5f594d;
+  margin-bottom: var(--space-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-xs);
+  color: #999;
+  margin-bottom: var(--space-3);
+}
+
+.review__author {
+  font-weight: var(--font-weight-medium);
+  color: #5f594d;
+}
+
+.review__product-footer {
+  margin-top: auto;
+}
+
+.review__divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: var(--space-3);
+}
+
+.review__product {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.review__product-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #f4f2ee;
+  flex-shrink: 0;
+}
+
+.review__product-info {
+  min-width: 0;
+}
+
+.review__product-name {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: #171411;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review__product-rating {
+  font-size: var(--font-size-xs);
+  color: #999;
+}
+
+.review__product-rating i {
+  color: #d4a017;
+  font-size: 0.65rem;
+}
+
+@media (max-width: 959px) {
+  .review__nav {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .review__best,
+  .review__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: var(--container-padding);
+    scrollbar-width: none;
+    gap: var(--space-4);
+    margin-inline: calc(-1 * var(--container-padding));
+    padding-inline: var(--container-padding);
+  }
+
+  .review__best::-webkit-scrollbar,
+  .review__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review__best > .review__card,
+  .review__grid > .review__card {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .review__best > .review__card {
+    flex-basis: 80%;
+  }
+
+  .review__grid > .review__card {
+    flex-basis: 44%;
+  }
+}
