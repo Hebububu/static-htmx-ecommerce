@@ -238,6 +238,14 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/board',
           },
           {
+            src: 'components/board-list/*.html',
+            dest: 'components/board-list',
+          },
+          {
+            src: 'components/board-list/*.css',
+            dest: 'components/board-list',
+          },
+          {
             src: 'pages/home.html',
             dest: 'pages',
           },
@@ -295,6 +303,20 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           },
           {
             src: 'pages/board/article.html',
+            dest: 'pages/board',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/board/list-content.html',
+            dest: 'pages/board',
+          },
+          {
+            src: 'pages/board/list.css',
+            dest: 'pages/board',
+          },
+          {
+            src: 'pages/board/list.html',
             dest: 'pages/board',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
