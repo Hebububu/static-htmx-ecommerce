@@ -218,6 +218,10 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/event-banner',
           },
           {
+            src: 'components/modal/*.css',
+            dest: 'components/modal',
+          },
+          {
             src: 'components/event-list/*.html',
             dest: 'components/event-list',
           },

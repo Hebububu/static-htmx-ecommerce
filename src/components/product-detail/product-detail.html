@@ -78,16 +78,16 @@
     <div class="product-detail__addons">
       <p class="product-detail__addons-heading">Extra Products</p>
 
-      <div class="product-detail__addon" data-addon-price="49">
-        <div class="product-detail__addon-header">
-          <label class="product-detail__addon-label">
-            <input class="product-detail__addon-check" type="checkbox" />
-            <span class="product-detail__addon-name">MagSafe Case</span>
-          </label>
-          <span class="product-detail__addon-price">+$49</span>
+      <div class="product-detail__addon" data-addon-index="0" data-addon-price="49">
+        <div class="product-detail__addon-thumb">
+          <img src="/products/iphone13.webp" alt="MagSafe Case" loading="lazy" />
         </div>
-        <div class="product-detail__addon-variant product-detail__addon-variant--hidden">
-          <select class="product-detail__select product-detail__select--sm">
+        <div class="product-detail__addon-body">
+          <div class="product-detail__addon-header">
+            <span class="product-detail__addon-name">MagSafe Case</span>
+            <span class="product-detail__addon-price">+$49</span>
+          </div>
+          <select class="product-detail__select product-detail__select--sm" data-addon-select>
             <option value="" disabled selected>Select color</option>
             <option value="black">Black</option>
             <option value="clear">Clear</option>
@@ -96,16 +96,16 @@
         </div>
       </div>
 
-      <div class="product-detail__addon" data-addon-price="29">
-        <div class="product-detail__addon-header">
-          <label class="product-detail__addon-label">
-            <input class="product-detail__addon-check" type="checkbox" />
-            <span class="product-detail__addon-name">Screen Protector</span>
-          </label>
-          <span class="product-detail__addon-price">+$29</span>
+      <div class="product-detail__addon" data-addon-index="1" data-addon-price="29">
+        <div class="product-detail__addon-thumb">
+          <img src="/products/iphone13.webp" alt="Screen Protector" loading="lazy" />
         </div>
-        <div class="product-detail__addon-variant product-detail__addon-variant--hidden">
-          <select class="product-detail__select product-detail__select--sm">
+        <div class="product-detail__addon-body">
+          <div class="product-detail__addon-header">
+            <span class="product-detail__addon-name">Screen Protector</span>
+            <span class="product-detail__addon-price">+$29</span>
+          </div>
+          <select class="product-detail__select product-detail__select--sm" data-addon-select>
             <option value="" disabled selected>Select type</option>
             <option value="glass">Tempered Glass</option>
             <option value="film">Film</option>
@@ -113,17 +113,24 @@
         </div>
       </div>
 
-      <div class="product-detail__addon" data-addon-price="249">
-        <div class="product-detail__addon-header">
-          <label class="product-detail__addon-label">
-            <input class="product-detail__addon-check" type="checkbox" />
+      <div class="product-detail__addon" data-addon-index="2" data-addon-price="249">
+        <div class="product-detail__addon-thumb">
+          <img src="/products/iphone13.webp" alt="AirPods Pro 2nd Gen" loading="lazy" />
+        </div>
+        <div class="product-detail__addon-body">
+          <div class="product-detail__addon-header">
             <span class="product-detail__addon-name">AirPods Pro 2nd Gen</span>
-          </label>
-          <span class="product-detail__addon-price">+$249</span>
+            <span class="product-detail__addon-price">+$249</span>
+          </div>
+          <button class="product-detail__addon-add" type="button" aria-label="Add item">
+            <i class="ph ph-plus" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
 
     </div>
+
+    <div class="product-detail__selected" id="pd-selected"></div>
 
     <div class="product-detail__total">
       <span class="product-detail__total-label">Total</span>
