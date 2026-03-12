@@ -84,6 +84,88 @@ export function showAlert(message: string): Promise<void> {
   });
 }
 
+export function showLightbox(images: string[], startIndex = 0): void {
+  ensureCSS();
+
+  let current = startIndex;
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.setAttribute('role', 'dialog');
+  backdrop.setAttribute('aria-modal', 'true');
+  backdrop.setAttribute('aria-label', 'Image lightbox');
+
+  const showNav = images.length > 1;
+
+  backdrop.innerHTML = `
+    <div class="modal-lightbox">
+      <img class="modal-lightbox__image" src="${images[current]}" alt="Photo ${current + 1} of ${images.length}" />
+      <button class="modal-lightbox__close" type="button" aria-label="Close">
+        <i class="ph ph-x" aria-hidden="true"></i>
+      </button>
+      ${showNav ? `
+        <button class="modal-lightbox__nav-btn modal-lightbox__nav-btn--prev" type="button" aria-label="Previous image">
+          <i class="ph ph-caret-left" aria-hidden="true"></i>
+        </button>
+        <button class="modal-lightbox__nav-btn modal-lightbox__nav-btn--next" type="button" aria-label="Next image">
+          <i class="ph ph-caret-right" aria-hidden="true"></i>
+        </button>
+        <span class="modal-lightbox__counter">${current + 1} / ${images.length}</span>
+      ` : ''}
+    </div>
+  `;
+
+  const img = backdrop.querySelector<HTMLImageElement>('.modal-lightbox__image')!;
+  const counter = backdrop.querySelector<HTMLElement>('.modal-lightbox__counter');
+
+  function updateImage(): void {
+    img.src = images[current];
+    img.alt = `Photo ${current + 1} of ${images.length}`;
+    if (counter) counter.textContent = `${current + 1} / ${images.length}`;
+  }
+
+  function dismiss(): void {
+    close(backdrop);
+  }
+
+  // Close button
+  backdrop.querySelector('.modal-lightbox__close')!.addEventListener('click', dismiss);
+
+  // Backdrop click (not on lightbox content)
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) dismiss();
+  });
+
+  // Nav buttons
+  if (showNav) {
+    backdrop.querySelector('.modal-lightbox__nav-btn--prev')!.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      updateImage();
+    });
+    backdrop.querySelector('.modal-lightbox__nav-btn--next')!.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      updateImage();
+    });
+  }
+
+  // Keyboard navigation
+  function onKey(e: KeyboardEvent): void {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', onKey);
+      dismiss();
+    } else if (showNav && e.key === 'ArrowLeft') {
+      current = (current - 1 + images.length) % images.length;
+      updateImage();
+    } else if (showNav && e.key === 'ArrowRight') {
+      current = (current + 1) % images.length;
+      updateImage();
+    }
+  }
+  document.addEventListener('keydown', onKey);
+
+  open(backdrop);
+}
+
 export function showConfirm(message: string): Promise<boolean> {
   ensureCSS();
   return new Promise((resolve) => {

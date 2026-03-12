@@ -20,6 +20,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
 img,
 picture,
 video,

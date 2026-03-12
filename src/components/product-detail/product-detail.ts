@@ -1,18 +1,20 @@
 import EmblaCarousel from 'embla-carousel';
-import { showAlert } from '../modal/modal';
+import { showAlert, showLightbox } from '../modal/modal';
 
 export function initProductDetail(root: HTMLElement): void {
-  const container = root.matches?.('.product-detail')
+  const wrap = root.matches?.('.product-detail-wrap')
     ? root
-    : root.querySelector<HTMLElement>('.product-detail');
-  if (!container) return;
+    : root.querySelector<HTMLElement>('.product-detail-wrap');
+  if (!wrap) return;
 
-  initGallery(container);
-  initOptions(container);
-  initAddons(container);
+  initGallery(wrap);
+  initOptions(wrap);
+  initAddons(wrap);
+  initTabs(wrap);
+  initReviews(wrap);
 
   // Start with addons disabled (no main product selected yet)
-  setAddonsDisabled(container, true);
+  setAddonsDisabled(wrap, true);
 }
 
 /* ── Gallery ── */
@@ -139,6 +141,115 @@ function initAddons(container: HTMLElement): void {
         updateTotal(container);
       });
     }
+  });
+}
+
+/* ── Tabs ── */
+
+function initTabs(wrap: HTMLElement): void {
+  const btns = wrap.querySelectorAll<HTMLButtonElement>('.product-detail-tabs__btn');
+  const tabBar = wrap.querySelector<HTMLElement>('.product-detail-tabs');
+  const sections = wrap.querySelectorAll<HTMLElement>('.product-detail-section');
+  if (!btns.length || !tabBar || !sections.length) return;
+
+  // Measure header height and set CSS variables for sticky offsets
+  function measureOffsets(): void {
+    const headerH = document.querySelector('header')?.offsetHeight ?? 0;
+    const tabH = tabBar!.offsetHeight;
+    wrap.style.setProperty('--_header-h', `${headerH}px`);
+    wrap.style.setProperty('--_scroll-offset', `${headerH + tabH}px`);
+  }
+
+  // Defer measurement to ensure header is rendered
+  requestAnimationFrame(measureOffsets);
+
+  function setActive(targetId: string): void {
+    btns.forEach((btn) => {
+      btn.classList.toggle('product-detail-tabs__btn--active', btn.dataset.tabTarget === targetId);
+    });
+  }
+
+  // Click → scroll to section
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.tabTarget;
+      if (!targetId) return;
+      const section = wrap.querySelector<HTMLElement>(`#${targetId}`);
+      section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActive(targetId);
+    });
+  });
+
+  // IntersectionObserver → update active tab on scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+          break;
+        }
+      }
+    },
+    { rootMargin: '-40% 0px -60% 0px' },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+/* ── Reviews ── */
+
+function initReviews(wrap: HTMLElement): void {
+  // Photo grid → lightbox
+  const stripThumbs = wrap.querySelectorAll<HTMLButtonElement>('.product-review-summary__photo');
+  const stripImages = Array.from(stripThumbs).map((t) => t.dataset.lightboxSrc ?? '');
+
+  stripThumbs.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => {
+      showLightbox(stripImages, i);
+    });
+  });
+
+  // Filter: All / Photo Reviews
+  const filterBtns = wrap.querySelectorAll<HTMLButtonElement>('.product-review-filter__btn');
+  const reviewItems = wrap.querySelectorAll<HTMLElement>('.product-review-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.reviewFilter;
+      filterBtns.forEach((b) => b.classList.toggle('product-review-filter__btn--active', b === btn));
+
+      reviewItems.forEach((item) => {
+        if (filter === 'photo') {
+          item.classList.toggle('product-review-item--hidden', !item.hasAttribute('data-has-photo'));
+        } else {
+          item.classList.remove('product-review-item--hidden');
+        }
+      });
+    });
+  });
+
+  // "Read more" toggles
+  wrap.querySelectorAll<HTMLButtonElement>('.product-review-item__more').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const body = btn.previousElementSibling as HTMLElement | null;
+      if (!body) return;
+
+      const isClamped = body.classList.contains('product-review-item__body--clamped');
+      body.classList.toggle('product-review-item__body--clamped');
+      btn.textContent = isClamped ? 'Show less' : 'Read more';
+    });
+  });
+
+  // Photo thumbnail → lightbox
+  wrap.querySelectorAll<HTMLElement>('.product-review-item__photos').forEach((container) => {
+    const thumbs = container.querySelectorAll<HTMLButtonElement>('.product-review-item__thumb');
+    const images = Array.from(thumbs).map((t) => t.dataset.lightboxSrc ?? '');
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => {
+        showLightbox(images, i);
+      });
+    });
   });
 }
 
