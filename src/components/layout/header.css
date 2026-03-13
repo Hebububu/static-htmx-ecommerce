@@ -267,12 +267,16 @@
 
 .header__nav-list {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-6);
   padding-block: var(--space-4);
 }
 
 .header__nav-item {
   position: relative;
+}
+
+.header__nav-item--separator {
+  margin-left: auto;
 }
 
 .header__nav-link {
@@ -417,6 +421,10 @@
 
 .header__drawer-nav-link:hover {
   color: var(--color-accent);
+}
+
+.header__drawer-nav-item--separator {
+  margin-top: var(--space-4);
 }
 
 .header__drawer-nav-caret {

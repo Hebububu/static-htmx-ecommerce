@@ -11,6 +11,7 @@ interface NavItem {
   label: string;
   href: string;
   children?: NavChild[];
+  separator?: boolean;
 }
 
 // ============================================================
@@ -19,16 +20,63 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: 'Home',
-    href: '/',
+    label: 'Smartphones',
+    href: '/pages/product/list.html?category=smartphones',
+    children: [
+      { label: 'iPhone', href: '/pages/product/list.html?category=iphone' },
+      { label: 'Galaxy', href: '/pages/product/list.html?category=galaxy' },
+      { label: 'Pixel', href: '/pages/product/list.html?category=pixel' },
+    ],
   },
   {
-    label: 'Products',
-    href: '/pages/product/list.html',
+    label: 'Tablets',
+    href: '/pages/product/list.html?category=tablets',
+    children: [
+      { label: 'iPad', href: '/pages/product/list.html?category=ipad' },
+      { label: 'Galaxy Tab', href: '/pages/product/list.html?category=galaxy-tab' },
+    ],
+  },
+  {
+    label: 'Laptops',
+    href: '/pages/product/list.html?category=laptops',
+    children: [
+      { label: 'MacBook', href: '/pages/product/list.html?category=macbook' },
+      { label: 'Galaxy Book', href: '/pages/product/list.html?category=galaxy-book' },
+      { label: 'Surface', href: '/pages/product/list.html?category=surface' },
+    ],
+  },
+  {
+    label: 'Wearables',
+    href: '/pages/product/list.html?category=wearables',
+    children: [
+      { label: 'Apple Watch', href: '/pages/product/list.html?category=apple-watch' },
+      { label: 'Galaxy Watch', href: '/pages/product/list.html?category=galaxy-watch' },
+      { label: 'AirPods', href: '/pages/product/list.html?category=airpods' },
+    ],
+  },
+  {
+    label: 'Accessories',
+    href: '/pages/product/list.html?category=accessories',
+    children: [
+      { label: 'Cases', href: '/pages/product/list.html?category=cases' },
+      { label: 'Chargers', href: '/pages/product/list.html?category=chargers' },
+      { label: 'Cables', href: '/pages/product/list.html?category=cables' },
+      { label: 'Screen Protectors', href: '/pages/product/list.html?category=screen-protectors' },
+    ],
+  },
+  {
+    label: 'Audio',
+    href: '/pages/product/list.html?category=audio',
+    children: [
+      { label: 'Headphones', href: '/pages/product/list.html?category=headphones' },
+      { label: 'Speakers', href: '/pages/product/list.html?category=speakers' },
+      { label: 'Earbuds', href: '/pages/product/list.html?category=earbuds' },
+    ],
   },
   {
     label: 'Event',
     href: '/pages/event/list.html',
+    separator: true,
   },
   {
     label: 'Board',
@@ -74,8 +122,12 @@ function renderNav(): void {
           </ul>`
         : '';
 
+      const classes = ['header__nav-item'];
+      if (hasChildren) classes.push('header__nav-item--has-children');
+      if (item.separator) classes.push('header__nav-item--separator');
+
       return `
-        <li class="header__nav-item${hasChildren ? ' header__nav-item--has-children' : ''}">
+        <li class="${classes.join(' ')}">
           <a class="header__nav-link" href="${item.href}">
             ${item.label}
             ${hasChildren ? '<i class="ph ph-caret-down header__nav-caret" aria-hidden="true"></i>' : ''}
@@ -113,8 +165,12 @@ function renderDrawerNav(): void {
           </ul>`
         : '';
 
+      const classes = ['header__drawer-nav-item'];
+      if (hasChildren) classes.push('header__drawer-nav-item--has-children');
+      if (item.separator) classes.push('header__drawer-nav-item--separator');
+
       return `
-        <li class="header__drawer-nav-item${hasChildren ? ' header__drawer-nav-item--has-children' : ''}">
+        <li class="${classes.join(' ')}">
           <a class="header__drawer-nav-link" href="${hasChildren ? '#' : item.href}"
              ${hasChildren ? 'aria-expanded="false"' : ''}>
             <span>${item.label}</span>
