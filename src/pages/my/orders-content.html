@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/components/breadcrumb/breadcrumb.css" data-component-style="breadcrumb" />
+<link rel="stylesheet" href="/pages/my/orders.css" data-component-style="orders-page" />
+
+<section class="account-page container" data-reveal>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a class="breadcrumb__link" href="/">Home</a>
+    <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
+    <a class="breadcrumb__link" href="/pages/account/index.html">My Page</a>
+    <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
+    <span class="breadcrumb__current" aria-current="page">Order History</span>
+  </nav>
+
+  <div class="account-page__content">
+    <div class="account-page__body">
+      <div
+        class="account-page__sidebar-slot"
+        hx-get="/components/account-sidebar/account-sidebar.html"
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      ></div>
+
+      <div
+        class="account-page__content-slot"
+        hx-get="/components/order/order-list.html"
+        hx-trigger="load"
+        hx-swap="innerHTML"
+      ></div>
+    </div>
+  </div>
+</section>

@@ -194,6 +194,14 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
             dest: 'components/account',
           },
           {
+            src: 'components/order/*.html',
+            dest: 'components/order',
+          },
+          {
+            src: 'components/order/*.css',
+            dest: 'components/order',
+          },
+          {
             src: 'components/review/*.html',
             dest: 'components/review',
           },
@@ -332,6 +340,20 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/account/index.html',
             dest: 'pages/account',
+            transform: (content: string) =>
+              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+          },
+          {
+            src: 'pages/my/orders-content.html',
+            dest: 'pages/my',
+          },
+          {
+            src: 'pages/my/orders.css',
+            dest: 'pages/my',
+          },
+          {
+            src: 'pages/my/orders.html',
+            dest: 'pages/my',
             transform: (content: string) =>
               content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
           },

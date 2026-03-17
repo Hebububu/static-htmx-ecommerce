@@ -151,6 +151,30 @@ function observeRevealElements(root: ParentNode = document): void {
 }
 
 // ============================================================
+// Account sidebar — URL-based active state
+// ============================================================
+
+function initAccountSidebar(root: HTMLElement): void {
+  const sidebar = root.matches?.('.account-sidebar')
+    ? root
+    : root.querySelector<HTMLElement>('.account-sidebar');
+  if (!sidebar) return;
+
+  const links = sidebar.querySelectorAll<HTMLAnchorElement>('.account-sidebar__link');
+  const currentPath = window.location.pathname;
+
+  links.forEach((link) => {
+    const isMatch = link.pathname === currentPath;
+    link.classList.toggle('is-active', isMatch);
+    if (isMatch) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+// ============================================================
 // htmx event listeners
 // ============================================================
 
@@ -166,6 +190,7 @@ document.body.addEventListener('htmx:load', (event) => {
   const loadedEl = (event as HtmxLoadEvent).detail.elt;
 
   if (loadedEl instanceof HTMLElement) {
+    initAccountSidebar(loadedEl);
     initBannerCarousel(loadedEl);
     initCategorySidebar(loadedEl);
     initEventListCountdown();
