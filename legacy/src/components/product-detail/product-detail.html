@@ -1,0 +1,402 @@
+<link rel="stylesheet" href="/components/product-detail/product-detail.css" data-component-style="product-detail" />
+
+<div class="product-detail-wrap">
+
+  <div class="product-detail">
+
+    <div class="product-detail__gallery">
+      <div class="product-detail__main-image">
+        <img src="/products/iphone13.webp" alt="iPhone 15 Pro" id="pd-main-img" />
+      </div>
+      <div class="product-detail__thumbs">
+        <div class="product-detail__thumbs-viewport" id="pd-thumbs-viewport">
+          <div class="product-detail__thumbs-container">
+            <button class="product-detail__thumb product-detail__thumb--active" type="button" data-index="0">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Front" loading="lazy" />
+            </button>
+            <button class="product-detail__thumb" type="button" data-index="1">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Back" loading="lazy" />
+            </button>
+            <button class="product-detail__thumb" type="button" data-index="2">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Side" loading="lazy" />
+            </button>
+            <button class="product-detail__thumb" type="button" data-index="3">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Camera" loading="lazy" />
+            </button>
+            <button class="product-detail__thumb" type="button" data-index="4">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Display" loading="lazy" />
+            </button>
+            <button class="product-detail__thumb product-detail__thumb--more" type="button" data-index="5">
+              <img src="/products/iphone13.webp" alt="iPhone 15 Pro - Angle" loading="lazy" />
+              <span class="product-detail__thumb-overlay">+4 more</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-detail__info">
+
+      <div class="product-detail__brand-row">
+        <span class="product-detail__brand">Apple</span>
+        <span class="product-detail__sku">SKU: APL-IP15P-256</span>
+      </div>
+
+      <h1 class="product-detail__title">iPhone 15 Pro</h1>
+
+      <div class="product-detail__rating">
+        <span class="product-detail__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+        <span class="product-detail__reviews">42 reviews</span>
+      </div>
+
+      <p class="product-detail__price" id="pd-price">$999.00</p>
+
+      <div class="product-detail__options">
+
+        <div class="product-detail__option">
+          <label class="product-detail__option-label" for="pd-storage">Storage</label>
+          <select class="product-detail__select" id="pd-storage">
+            <option value="" disabled selected>Select storage</option>
+            <option value="128" data-price="999">128GB</option>
+            <option value="256" data-price="1099">256GB (+$100)</option>
+            <option value="512" data-price="1199">512GB (+$200)</option>
+            <option value="1024" data-price="1399">1TB (+$400)</option>
+          </select>
+        </div>
+
+        <div class="product-detail__option product-detail__option--hidden" id="pd-color-wrap">
+          <label class="product-detail__option-label" for="pd-color">Color</label>
+          <select class="product-detail__select" id="pd-color">
+            <option value="" disabled selected>Select color</option>
+            <option value="natural">Natural Titanium</option>
+            <option value="blue">Blue Titanium</option>
+            <option value="white">White Titanium</option>
+            <option value="black">Black Titanium</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="product-detail__addons">
+        <p class="product-detail__addons-heading">Extra Products</p>
+
+        <div class="product-detail__addon" data-addon-index="0" data-addon-price="49">
+          <div class="product-detail__addon-thumb">
+            <img src="/products/iphone13.webp" alt="MagSafe Case" loading="lazy" />
+          </div>
+          <div class="product-detail__addon-body">
+            <div class="product-detail__addon-header">
+              <span class="product-detail__addon-name">MagSafe Case</span>
+              <span class="product-detail__addon-price">+$49</span>
+            </div>
+            <select class="product-detail__select product-detail__select--sm" data-addon-select>
+              <option value="" disabled selected>Select color</option>
+              <option value="black">Black</option>
+              <option value="clear">Clear</option>
+              <option value="blue">Blue</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-detail__addon" data-addon-index="1" data-addon-price="29">
+          <div class="product-detail__addon-thumb">
+            <img src="/products/iphone13.webp" alt="Screen Protector" loading="lazy" />
+          </div>
+          <div class="product-detail__addon-body">
+            <div class="product-detail__addon-header">
+              <span class="product-detail__addon-name">Screen Protector</span>
+              <span class="product-detail__addon-price">+$29</span>
+            </div>
+            <select class="product-detail__select product-detail__select--sm" data-addon-select>
+              <option value="" disabled selected>Select type</option>
+              <option value="glass">Tempered Glass</option>
+              <option value="film">Film</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-detail__addon" data-addon-index="2" data-addon-price="249">
+          <div class="product-detail__addon-thumb">
+            <img src="/products/iphone13.webp" alt="AirPods Pro 2nd Gen" loading="lazy" />
+          </div>
+          <div class="product-detail__addon-body">
+            <div class="product-detail__addon-header">
+              <span class="product-detail__addon-name">AirPods Pro 2nd Gen</span>
+              <span class="product-detail__addon-price">+$249</span>
+            </div>
+            <button class="product-detail__addon-add" type="button" aria-label="Add item">
+              <i class="ph ph-plus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="product-detail__selected" id="pd-selected"></div>
+
+      <div class="product-detail__total">
+        <span class="product-detail__total-label">Total</span>
+        <span class="product-detail__total-price" id="pd-total">$999.00</span>
+      </div>
+
+      <div class="product-detail__actions">
+        <button class="product-detail__cart-btn" type="button">
+          <i class="ph ph-shopping-cart" aria-hidden="true"></i>
+          Add to cart
+        </button>
+        <button class="product-detail__wish-btn" type="button" aria-label="Add to wishlist">
+          <i class="ph ph-heart" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <p class="product-detail__delivery">
+        <i class="ph ph-truck" aria-hidden="true"></i>
+        Free delivery on orders over $30.0
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- Tab navigation -->
+  <nav class="product-detail-tabs" aria-label="Product sections">
+    <button class="product-detail-tabs__btn product-detail-tabs__btn--active" type="button" data-tab-target="pd-section-info">Product Details</button>
+    <button class="product-detail-tabs__btn" type="button" data-tab-target="pd-section-reviews">Product Reviews (1)</button>
+    <button class="product-detail-tabs__btn" type="button" data-tab-target="pd-section-inquiry">Product Inquiry (2)</button>
+  </nav>
+
+  <!-- Sections -->
+  <section class="product-detail-section" id="pd-section-info">
+    <h2 class="product-detail-section__heading">Product Details</h2>
+    <p class="product-detail-section__placeholder">Detailed product information will be displayed here.</p>
+  </section>
+
+  <section class="product-detail-section" id="pd-section-reviews">
+    <h2 class="product-detail-section__heading">Product Reviews</h2>
+
+    <!-- Review summary -->
+    <div class="product-review-summary">
+
+      <div class="product-review-summary__photos">
+        <p class="product-review-summary__photos-heading">Photo Reviews</p>
+        <div class="product-review-summary__photos-grid">
+          <button class="product-review-summary__photo" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 1" loading="lazy" />
+          </button>
+          <button class="product-review-summary__photo" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 2" loading="lazy" />
+          </button>
+          <button class="product-review-summary__photo" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 3" loading="lazy" />
+          </button>
+          <button class="product-review-summary__photo" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 4" loading="lazy" />
+          </button>
+          <button class="product-review-summary__photo" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 5" loading="lazy" />
+          </button>
+        </div>
+      </div>
+
+      <div class="product-review-summary__stats">
+        <div class="product-review-summary__score-area">
+          <span class="product-review-summary__score">4.3</span>
+          <div class="product-review-summary__stars" aria-label="4.3 out of 5 stars">
+            <span class="product-review-summary__star product-review-summary__star--filled">&#9733;</span>
+            <span class="product-review-summary__star product-review-summary__star--filled">&#9733;</span>
+            <span class="product-review-summary__star product-review-summary__star--filled">&#9733;</span>
+            <span class="product-review-summary__star product-review-summary__star--filled">&#9733;</span>
+            <span class="product-review-summary__star">&#9733;</span>
+          </div>
+          <span class="product-review-summary__count">42 reviews</span>
+        </div>
+        <div class="product-review-summary__bars">
+          <div class="product-review-summary__bar-row">
+            <span class="product-review-summary__bar-label">5</span>
+            <span class="product-review-summary__bar-star">&#9733;</span>
+            <div class="product-review-summary__bar-track"><div class="product-review-summary__bar-fill" style="width: 59.5%"></div></div>
+            <span class="product-review-summary__bar-count">25</span>
+          </div>
+          <div class="product-review-summary__bar-row">
+            <span class="product-review-summary__bar-label">4</span>
+            <span class="product-review-summary__bar-star">&#9733;</span>
+            <div class="product-review-summary__bar-track"><div class="product-review-summary__bar-fill" style="width: 23.8%"></div></div>
+            <span class="product-review-summary__bar-count">10</span>
+          </div>
+          <div class="product-review-summary__bar-row">
+            <span class="product-review-summary__bar-label">3</span>
+            <span class="product-review-summary__bar-star">&#9733;</span>
+            <div class="product-review-summary__bar-track"><div class="product-review-summary__bar-fill" style="width: 9.5%"></div></div>
+            <span class="product-review-summary__bar-count">4</span>
+          </div>
+          <div class="product-review-summary__bar-row">
+            <span class="product-review-summary__bar-label">2</span>
+            <span class="product-review-summary__bar-star">&#9733;</span>
+            <div class="product-review-summary__bar-track"><div class="product-review-summary__bar-fill" style="width: 4.8%"></div></div>
+            <span class="product-review-summary__bar-count">2</span>
+          </div>
+          <div class="product-review-summary__bar-row">
+            <span class="product-review-summary__bar-label">1</span>
+            <span class="product-review-summary__bar-star">&#9733;</span>
+            <div class="product-review-summary__bar-track"><div class="product-review-summary__bar-fill" style="width: 2.4%"></div></div>
+            <span class="product-review-summary__bar-count">1</span>
+          </div>
+        </div>
+        <button class="product-review-summary__write-btn" type="button">
+          <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+          Write a Review
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Review filter -->
+    <div class="product-review-filter">
+      <button class="product-review-filter__btn product-review-filter__btn--active" type="button" data-review-filter="all">All (42)</button>
+      <button class="product-review-filter__btn" type="button" data-review-filter="photo">Photo Reviews (2)</button>
+    </div>
+
+    <!-- Review list -->
+    <div class="product-review-list">
+
+      <article class="product-review-item" data-has-photo>
+        <div class="product-review-item__header">
+          <span class="product-review-item__author">Ki***</span>
+          <span class="product-review-item__stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="product-review-item__date">2026-01-08</span>
+        </div>
+        <p class="product-review-item__option">Option: 256GB / Blue Titanium</p>
+        <p class="product-review-item__body product-review-item__body--clamped">Absolutely love this phone. The titanium finish feels incredibly premium in hand, and the camera system is a massive leap from my old phone. Night mode photos are stunning — I took some shots at a concert and they came out crystal clear. Battery life easily gets me through a full day of heavy use. The Action Button is more useful than I expected, I've set it to toggle silent mode. Only minor gripe is the weight, but you get used to it quickly. Highly recommend the 256GB option if you take lots of photos and videos.</p>
+        <button class="product-review-item__more" type="button">Read more</button>
+        <div class="product-review-item__photos">
+          <button class="product-review-item__thumb" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 1" loading="lazy" />
+          </button>
+          <button class="product-review-item__thumb" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 2" loading="lazy" />
+          </button>
+          <button class="product-review-item__thumb" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 3" loading="lazy" />
+          </button>
+        </div>
+      </article>
+
+      <article class="product-review-item" data-has-photo>
+        <div class="product-review-item__header">
+          <span class="product-review-item__author">Sa***</span>
+          <span class="product-review-item__stars" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="product-review-item__date">2025-12-22</span>
+        </div>
+        <p class="product-review-item__option">Option: 512GB / Natural Titanium</p>
+        <p class="product-review-item__body">Great upgrade from the 14 Pro. The USB-C switch is very welcome — no more hunting for Lightning cables. Display is gorgeous and the 120Hz refresh feels buttery smooth. Took off one star because the included cable is short.</p>
+        <div class="product-review-item__photos">
+          <button class="product-review-item__thumb" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 1" loading="lazy" />
+          </button>
+          <button class="product-review-item__thumb" type="button" data-lightbox-src="/products/iphone13.webp">
+            <img src="/products/iphone13.webp" alt="Review photo 2" loading="lazy" />
+          </button>
+        </div>
+      </article>
+
+      <article class="product-review-item">
+        <div class="product-review-item__header">
+          <span class="product-review-item__author">Mi***</span>
+          <span class="product-review-item__stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="product-review-item__date">2025-12-15</span>
+        </div>
+        <p class="product-review-item__option">Option: 128GB / Black Titanium</p>
+        <p class="product-review-item__body">Perfect phone. Fast shipping too. The black titanium color is stunning in person.</p>
+      </article>
+
+      <article class="product-review-item">
+        <div class="product-review-item__header">
+          <span class="product-review-item__author">Je***</span>
+          <span class="product-review-item__stars" aria-label="3 out of 5 stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+          <span class="product-review-item__date">2025-12-03</span>
+        </div>
+        <p class="product-review-item__option">Option: 1TB / White Titanium</p>
+        <p class="product-review-item__body product-review-item__body--clamped">The phone itself is fine, but for the 1TB price point I expected more. The camera improvements over the 14 Pro Max are incremental at best. ProRes video is nice if you're into filmmaking, but most people won't notice the difference. Also, the phone runs warm during extended camera use or gaming sessions. Apple really needs to address the thermal management. On the positive side, build quality is excellent and the titanium frame does feel lighter than the stainless steel of previous models.</p>
+        <button class="product-review-item__more" type="button">Read more</button>
+      </article>
+
+      <article class="product-review-item">
+        <div class="product-review-item__header">
+          <span class="product-review-item__author">Al***</span>
+          <span class="product-review-item__stars" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+          <span class="product-review-item__date">2025-11-28</span>
+        </div>
+        <p class="product-review-item__option">Option: 256GB / Natural Titanium</p>
+        <p class="product-review-item__body">Solid phone, great camera. The natural titanium finish picks up fingerprints easily though. Would recommend a case.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="product-detail-section" id="pd-section-inquiry">
+    <h2 class="product-detail-section__heading">Product Inquiry</h2>
+    <p class="product-detail-section__placeholder">Product inquiries will be displayed here.</p>
+  </section>
+
+  <!-- Policy accordions -->
+  <div class="product-detail-accordions">
+
+    <details class="product-detail-accordion">
+      <summary class="product-detail-accordion__summary">
+        <span class="product-detail-accordion__title">Payment Information</span>
+        <i class="ph ph-caret-up product-detail-accordion__icon" aria-hidden="true"></i>
+      </summary>
+      <div class="product-detail-accordion__body">
+        <p>For high-value purchases, you may receive a verification call from your card issuer. If the transaction is suspected to be fraudulent or unauthorized, the order may be placed on hold or canceled.</p>
+        <p>For bank transfer payments, you can deposit directly at a nearby bank, or use PC banking, internet banking, or mobile banking.</p>
+        <p>The depositor name must match the name entered at checkout. Payment must be made within 7 days — orders without payment will be automatically canceled.</p>
+      </div>
+    </details>
+
+    <details class="product-detail-accordion">
+      <summary class="product-detail-accordion__summary">
+        <span class="product-detail-accordion__title">Shipping Information</span>
+        <i class="ph ph-caret-up product-detail-accordion__icon" aria-hidden="true"></i>
+      </summary>
+      <div class="product-detail-accordion__body">
+        <p><strong>Shipping method:</strong> Customer-selected</p>
+        <p><strong>Shipping region:</strong> Nationwide</p>
+        <p><strong>Shipping cost:</strong> Customer-selected</p>
+        <p><strong>Delivery time:</strong> 1–2 business days</p>
+        <p><strong>Note:</strong> Additional fees may apply for island and remote areas.</p>
+        <p>Orders are shipped after payment confirmation. Delivery times may vary depending on the product, and you will be notified separately of any delays.</p>
+      </div>
+    </details>
+
+    <details class="product-detail-accordion">
+      <summary class="product-detail-accordion__summary">
+        <span class="product-detail-accordion__title">Exchange &amp; Return Information</span>
+        <i class="ph ph-caret-up product-detail-accordion__icon" aria-hidden="true"></i>
+      </summary>
+      <div class="product-detail-accordion__body">
+        <p><strong>Return address</strong></p>
+        <p>- 123 Commerce Street, Suite 300, New York, NY 10001</p>
+
+        <p><strong>Eligible for exchange or return</strong></p>
+        <ul>
+          <li>Within 7 days of receiving the product. If the product was delivered later than stated, within 7 days from the start of delivery.</li>
+          <li>If the product description, packaging, or advertising differs from the actual product — within 3 months of delivery or within 30 days of discovering the discrepancy.</li>
+        </ul>
+
+        <p><strong>Not eligible for exchange or return</strong></p>
+        <ul>
+          <li>Product lost or damaged due to customer negligence (except packaging opened for inspection).</li>
+          <li>Product value significantly decreased due to customer use or partial consumption.</li>
+          <li>Product value significantly decreased due to the passage of time, making resale difficult.</li>
+          <li>Packaging of reproducible products damaged.</li>
+          <li>Custom-made or individually produced products where cancellation would cause irreversible harm to the seller.</li>
+          <li>Digital content that has been accessed or downloaded (unless the content is defective).</li>
+        </ul>
+
+        <p>* If you change your mind about an exchange or return, the customer is responsible for return shipping costs (including size and color exchanges).</p>
+      </div>
+    </details>
+
+  </div>
+
+</div>

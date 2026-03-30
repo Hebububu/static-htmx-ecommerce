@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="/components/layout/header.css" data-component-style="header" />
+
+<div class="header" id="site-header">
+
+  <!-- Promo banner — CSS-only vertical rotation -->
+  <div class="header__banner" aria-label="Promotions">
+    <div class="header__banner-track" aria-hidden="true">
+      <div class="header__banner-slide">Free shipping on all orders over $50 — shop now</div>
+      <div class="header__banner-slide">Sign up today and receive an exclusive welcome coupon</div>
+      <div class="header__banner-slide">Refer a friend and both of you earn store credit</div>
+      <div class="header__banner-slide">Follow our channel for the latest deals and discounts</div>
+    </div>
+  </div>
+
+  <!-- Top utility bar (desktop only) -->
+  <div class="header__topbar">
+    <div class="header__topbar-inner container">
+      <nav class="header__topbar-nav" aria-label="Utility navigation">
+        <a href="/pages/account/index.html" class="header__topbar-link">Sign in</a>
+        <a href="/pages/my/orders.html" class="header__topbar-link">Orders</a>
+        <a href="/pages/my/dashboard.html" class="header__topbar-link">Coupons</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main row -->
+  <div class="header__main">
+    <div class="header__main-inner container">
+
+      <button
+        class="header__action-btn header__action-btn--hamburger"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="header-drawer"
+      >
+        <i class="ph ph-list" aria-hidden="true"></i>
+      </button>
+
+      <a href="/" class="header__logo" aria-label="Go to homepage">Logo</a>
+
+      <form
+        class="header__search"
+        role="search"
+        action="/pages/product/list.html"
+        method="get"
+      >
+        <input
+          class="header__search-input"
+          type="search"
+          name="q"
+          placeholder="Search..."
+          aria-label="Search products"
+          autocomplete="off"
+        />
+        <button class="header__search-btn" type="submit" aria-label="Submit search">
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        </button>
+      </form>
+
+      <div class="header__actions">
+
+        <button
+          class="header__action-btn header__action-btn--search"
+          type="button"
+          aria-label="Search"
+          aria-expanded="false"
+          aria-controls="header-search-expand"
+        >
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        </button>
+
+        <a
+          class="header__action-btn header__action-btn--my"
+          href="/pages/account/index.html"
+          aria-label="Sign in"
+        >
+          <i class="ph ph-user" aria-hidden="true"></i>
+        </a>
+
+        <a
+          class="header__action-btn header__action-btn--cart"
+          href="/pages/cart/index.html"
+          aria-label="Cart, 0 items"
+        >
+          <i class="ph ph-shopping-cart" aria-hidden="true"></i>
+          <span class="header__cart-badge" aria-hidden="true">0</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Expandable search (tablet/mobile, slides down on icon click) -->
+    <div class="header__search-expand" id="header-search-expand" hidden>
+      <form
+        class="header__search-expand-form container"
+        role="search"
+        action="/pages/product/list.html"
+        method="get"
+      >
+        <input
+          class="header__search-expand-input"
+          type="search"
+          name="q"
+          placeholder="Search..."
+          aria-label="Search products"
+          autocomplete="off"
+        />
+        <button class="header__search-expand-btn" type="submit" aria-label="Submit search">
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Category navigation (desktop only, rendered by header.ts) -->
+  <nav class="header__nav" aria-label="Main navigation">
+    <div class="header__nav-inner container">
+      <ul class="header__nav-list" id="header-nav-list"></ul>
+    </div>
+  </nav>
+
+</div>
+
+<!-- Mobile/tablet drawer -->
+<div class="header__drawer" id="header-drawer" aria-hidden="true">
+  <div class="header__drawer-backdrop"></div>
+  <div
+    class="header__drawer-inner"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+  >
+    <button class="header__drawer-close" type="button" aria-label="Close menu">
+      <i class="ph ph-x" aria-hidden="true"></i>
+    </button>
+
+    <!-- Drawer nav (rendered by header.ts) -->
+    <nav class="header__drawer-nav" aria-label="Mobile navigation">
+      <ul class="header__drawer-nav-list" id="header-drawer-nav-list"></ul>
+    </nav>
+
+    <div class="header__drawer-utils">
+      <a href="/pages/account/index.html" class="header__drawer-util-link">Sign in</a>
+      <a href="/pages/my/orders.html" class="header__drawer-util-link">Orders</a>
+      <a href="/pages/my/dashboard.html" class="header__drawer-util-link">Coupons</a>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/components/layout/header.ts"></script>

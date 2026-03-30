@@ -1,0 +1,211 @@
+<link rel="stylesheet" href="/components/breadcrumb/breadcrumb.css" data-component-style="breadcrumb" />
+<link rel="stylesheet" href="/components/product/card.css" data-component-style="product-card" />
+<link rel="stylesheet" href="/pages/event/event.css" data-component-style="event" />
+
+<div class="event" data-reveal>
+
+  <div
+    class="event__banner-slot"
+    hx-get="/components/event-banner/event-banner.html"
+    hx-trigger="load"
+    hx-swap="innerHTML"
+  ></div>
+
+  <div class="event__main container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a class="breadcrumb__link" href="/">Home</a>
+      <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
+      <span class="breadcrumb__current" aria-current="page">Flash Sale</span>
+    </nav>
+
+    <section class="event-showcase">
+      <div class="event-showcase__inner">
+        <div class="event-showcase__copy">
+          <p class="event-showcase__eyebrow">Featured Deal</p>
+          <h2 class="event-showcase__heading">Get the latest flagship at an unbeatable price.</h2>
+          <p class="event-showcase__desc">Our biggest sale of the season. Premium devices at prices you won't see again. Limited stock available.</p>
+        </div>
+        <div
+          class="event-showcase__card"
+          hx-get="/components/product/card.html"
+          hx-trigger="load"
+          hx-swap="innerHTML"
+        ></div>
+      </div>
+    </section>
+
+    <section class="event-products">
+      <div class="event-products__header">
+        <h2 class="event-products__heading">Sale Products</h2>
+        <p class="event-products__count">8 products</p>
+      </div>
+
+      <div class="event-products__grid">
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View iPhone 15 Pro details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="iPhone 15 Pro" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">iPhone 15 Pro 256GB</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(2,847)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$1,199</span>
+                <span class="product-card__discount">-30%</span>
+                <strong class="product-card__price">$839</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View Galaxy S24 Ultra details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy S24 Ultra" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">Galaxy S24 Ultra 512GB</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(1,923)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$1,419</span>
+                <span class="product-card__discount">-25%</span>
+                <strong class="product-card__price">$1,064</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View MacBook Air M3 details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="MacBook Air M3" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">MacBook Air M3 15-inch</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(1,678)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$1,499</span>
+                <span class="product-card__discount">-20%</span>
+                <strong class="product-card__price">$1,199</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View iPad Air M2 details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="iPad Air M2" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">iPad Air M2 256GB</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(1,456)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$699</span>
+                <span class="product-card__discount">-35%</span>
+                <strong class="product-card__price">$454</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View AirPods Max details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="AirPods Max" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">AirPods Max Silver</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;</span> <span>(987)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$549</span>
+                <span class="product-card__discount">-15%</span>
+                <strong class="product-card__price">$466</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View Apple Watch Ultra 2 details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="Apple Watch Ultra 2" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">Apple Watch Ultra 2</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(834)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$899</span>
+                <span class="product-card__discount">-20%</span>
+                <strong class="product-card__price">$719</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View Galaxy Buds Pro details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="Galaxy Buds Pro" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">Galaxy Buds Pro</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;</span> <span>(2,103)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$249</span>
+                <span class="product-card__discount">-40%</span>
+                <strong class="product-card__price">$149</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <a class="product-card__media" href="#" aria-label="View Pixel 9 Pro details">
+            <img class="product-card__image" src="/products/iphone13.webp" alt="Pixel 9 Pro" loading="lazy" />
+          </a>
+          <div class="product-card__body">
+            <div class="product-card__meta">
+              <h3 class="product-card__title">Google Pixel 9 Pro 256GB</h3>
+              <p class="product-card__rating"><span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(1,102)</span></p>
+            </div>
+            <div class="product-card__footer">
+              <div class="product-card__pricing">
+                <span class="product-card__original-price">$1,059</span>
+                <span class="product-card__discount">-22%</span>
+                <strong class="product-card__price">$826</strong>
+              </div>
+              <button class="product-card__wish" type="button" aria-label="Add to wishlist"><i class="ph ph-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+
+</div>

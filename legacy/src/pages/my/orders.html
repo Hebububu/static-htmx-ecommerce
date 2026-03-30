@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order History - My Page</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <script src="/vendor/htmx.min.js" defer></script>
+  </head>
+  <body>
+    <header
+      hx-get="/components/layout/header.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></header>
+
+    <main
+      id="content"
+      hx-get="/pages/my/orders-content.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></main>
+
+    <footer
+      hx-get="/components/layout/footer.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></footer>
+
+    <div
+      hx-get="/components/quick-menu/quick-menu.html"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></div>
+
+    <div id="modal-container"></div>
+    <script type="module" src="/app.ts"></script>
+  </body>
+</html>
