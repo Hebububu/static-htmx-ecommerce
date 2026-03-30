@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve, asset } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { cart } from '$lib/stores/cart.svelte';
 	import { categories } from '$lib/data/categories';
 
@@ -130,7 +130,7 @@
 	<nav class="header__nav" aria-label="Main navigation">
 		<div class="header__nav-inner container">
 			<ul class="header__nav-list">
-				{#each categories as cat}
+				{#each categories as cat (cat.id)}
 					<li class="header__nav-item" class:header__nav-item--has-children={cat.children?.length}>
 						<a href="{resolve('/products/')}?category={cat.slug}" class="header__nav-link">
 							{cat.name}
@@ -140,7 +140,7 @@
 						</a>
 						{#if cat.children?.length}
 							<div class="header__nav-dropdown">
-								{#each cat.children as child}
+								{#each cat.children as child (child.id)}
 									<a
 										href="{resolve('/products/')}?category={child.slug}"
 										class="header__nav-dropdown-link">{child.name}</a
@@ -178,7 +178,7 @@
 			</button>
 			<nav class="header__drawer-nav" aria-label="Mobile navigation">
 				<ul class="header__drawer-nav-list">
-					{#each categories as cat}
+					{#each categories as cat (cat.id)}
 						<li
 							class="header__drawer-nav-item"
 							class:header__drawer-nav-item--open={openCategory === cat.id}
@@ -189,7 +189,7 @@
 									<i class="ph ph-caret-down header__drawer-nav-caret" aria-hidden="true"></i>
 								</button>
 								<div class="header__drawer-nav-children">
-									{#each cat.children as child}
+									{#each cat.children as child (child.id)}
 										<a
 											href="{resolve('/products/')}?category={child.slug}"
 											class="header__drawer-nav-child-link"

@@ -102,11 +102,11 @@
 
 			{#if product.options?.length}
 				<div class="space-y-4 mb-6">
-					{#each product.options as option}
+					{#each product.options as option (option.name)}
 						<div>
 							<label class="block text-sm font-medium mb-2">{option.name}</label>
 							<div class="flex flex-wrap gap-2">
-								{#each option.values as value}
+								{#each option.values as value (value)}
 									<button
 										class="px-4 py-2 text-sm border rounded-(--radius-sm) transition-colors
 											{selectedOptions[option.name] === value

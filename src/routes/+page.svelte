@@ -44,7 +44,7 @@
 <section class="max-w-(--container-max) mx-auto px-4 md:px-6 py-10">
 	<h2 class="text-xl font-bold mb-6">Categories</h2>
 	<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-		{#each categories as cat}
+		{#each categories as cat (cat.id)}
 			<a
 				href="{base}/products/?category={cat.slug}"
 				class="flex flex-col items-center gap-3 p-6 bg-white rounded-(--radius-base) shadow-(--shadow-sm) hover:shadow-(--shadow-base) transition-shadow"
@@ -65,7 +65,7 @@
 		<a href="{base}/products/" class="text-sm text-(--color-accent) hover:underline">View All</a>
 	</div>
 	<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-		{#each products.slice(0, 4) as product}
+		{#each products.slice(0, 4) as product (product.id)}
 			<ProductCard {product} />
 		{/each}
 	</div>
