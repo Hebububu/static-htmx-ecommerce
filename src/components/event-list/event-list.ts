@@ -29,5 +29,12 @@ export function initEventListCountdown(): void {
   }
 
   update();
-  setInterval(update, 1_000);
+  const intervalId = setInterval(() => {
+    // Stop updating if element was removed from DOM (e.g. HTMX page swap)
+    if (!cards[0].isConnected) {
+      clearInterval(intervalId);
+      return;
+    }
+    update();
+  }, 1_000);
 }

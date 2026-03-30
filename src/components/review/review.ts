@@ -3,19 +3,24 @@ function bindArrows(header: HTMLElement, scrollContainer: HTMLElement): void {
   const next = header.querySelector<HTMLElement>('.review__next');
   if (!prev || !next) return;
 
-  const getCardWidth = (): number => {
+  let cachedCardWidth = 0;
+
+  const measureCardWidth = (): number => {
     const card = scrollContainer.querySelector<HTMLElement>('.review__card');
     if (!card) return 0;
     const gap = parseFloat(getComputedStyle(scrollContainer).gap) || 0;
     return card.offsetWidth + gap;
   };
 
+  cachedCardWidth = measureCardWidth();
+  window.addEventListener('resize', () => { cachedCardWidth = measureCardWidth(); }, { passive: true });
+
   prev.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    scrollContainer.scrollBy({ left: -(cachedCardWidth || measureCardWidth()), behavior: 'smooth' });
   });
 
   next.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    scrollContainer.scrollBy({ left: cachedCardWidth || measureCardWidth(), behavior: 'smooth' });
   });
 }
 

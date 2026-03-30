@@ -26,6 +26,7 @@
   width: 140%;
   height: 100%;
   margin-left: -20%;
+  will-change: transform;
 }
 
 .banner-carousel__parallax img {
