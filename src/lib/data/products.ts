@@ -96,6 +96,3 @@ export function getProduct(id: string): Product | undefined {
 	return products.find((p) => p.id === id);
 }
 
-export function getProductsByCategory(category: string): Product[] {
-	return products.filter((p) => p.category === category);
-}
