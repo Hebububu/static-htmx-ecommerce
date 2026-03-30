@@ -25,13 +25,39 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
   const isProd = command === 'build';
   const tsEntries = await buildTsEntries();
 
+  // Base path for deployment (e.g. '/static-htmx-ecommerce/' for GitHub Pages).
+  // Defaults to '/' for local development.
+  const basePath = process.env.VITE_BASE ?? '/';
+
+  /**
+   * Rewrite HTML for production:
+   * 1. Replace .ts script references with .js
+   * 2. Prefix absolute paths with the deployment base path
+   */
+  function rewriteHtml(content: string): string {
+    let result = content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"');
+    if (basePath !== '/') {
+      result = result.replace(
+        /((?:href|src|hx-get|hx-push-url)=")\/(?!\/)/g,
+        `$1${basePath}`
+      );
+    }
+    return result;
+  }
+
   return {
     // Vite treats src/ as the project root.
     // All absolute paths in HTML/TS (e.g. /css/global.css) resolve from here.
     root: 'src',
 
+    base: basePath,
+
     // Serve static assets from the project-level public directory.
     publicDir: '../public',
+
+    define: {
+      __BASE_PATH__: JSON.stringify(basePath),
+    },
 
     build: {
       outDir: '../dist',
@@ -78,12 +104,18 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
     plugins: [
       viteStaticCopy({
         targets: [
-          // Copy index.html, rewriting /app.ts → /app.js for production
+          // Copy index.html with path rewriting for production
           {
             src: 'index.html',
             dest: '.',
-            transform: (content: string) =>
-              content.replace(/src="\/app\.ts"/g, 'src="/app.js"'),
+            transform: rewriteHtml,
+          },
+          // Copy index.html as 404.html for SPA fallback on GitHub Pages
+          {
+            src: 'index.html',
+            dest: '.',
+            rename: '404.html',
+            transform: rewriteHtml,
           },
           // Copy component HTML files in each subdirectory.
           // transform only works on individual files (not directories), so we use globs.
@@ -91,20 +123,17 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/layout/*.html',
             dest: 'components/layout',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           // Copy component CSS files
           {
             src: 'components/layout/*.css',
             dest: 'components/layout',
           },
-          // Copy product component HTML files.
           {
             src: 'components/product/*.html',
             dest: 'components/product',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           // Copy product component CSS files.
           {
@@ -114,17 +143,16 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/product-detail/*.html',
             dest: 'components/product-detail',
+            transform: rewriteHtml,
           },
           {
             src: 'components/product-detail/*.css',
             dest: 'components/product-detail',
           },
-          // Copy banner component HTML files.
           {
             src: 'components/banner/*.html',
             dest: 'components/banner',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           // Copy banner component CSS files.
           {
@@ -135,6 +163,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/category/*.html',
             dest: 'components/category',
+            transform: rewriteHtml,
           },
           // Copy category component CSS files.
           {
@@ -144,6 +173,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/notice-service/*.html',
             dest: 'components/notice-service',
+            transform: rewriteHtml,
           },
           {
             src: 'components/notice-service/*.css',
@@ -156,6 +186,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/category-banner/*.html',
             dest: 'components/category-banner',
+            transform: rewriteHtml,
           },
           {
             src: 'components/category-banner/*.css',
@@ -164,6 +195,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/category-sidebar/*.html',
             dest: 'components/category-sidebar',
+            transform: rewriteHtml,
           },
           {
             src: 'components/category-sidebar/*.css',
@@ -172,6 +204,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/support-sidebar/*.html',
             dest: 'components/support-sidebar',
+            transform: rewriteHtml,
           },
           {
             src: 'components/support-sidebar/*.css',
@@ -180,6 +213,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/account-sidebar/*.html',
             dest: 'components/account-sidebar',
+            transform: rewriteHtml,
           },
           {
             src: 'components/account-sidebar/*.css',
@@ -188,6 +222,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/account/*.html',
             dest: 'components/account',
+            transform: rewriteHtml,
           },
           {
             src: 'components/account/*.css',
@@ -196,6 +231,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/order/*.html',
             dest: 'components/order',
+            transform: rewriteHtml,
           },
           {
             src: 'components/order/*.css',
@@ -204,6 +240,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/review/*.html',
             dest: 'components/review',
+            transform: rewriteHtml,
           },
           {
             src: 'components/review/*.css',
@@ -212,6 +249,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/quick-menu/*.html',
             dest: 'components/quick-menu',
+            transform: rewriteHtml,
           },
           {
             src: 'components/quick-menu/*.css',
@@ -220,6 +258,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/event-banner/*.html',
             dest: 'components/event-banner',
+            transform: rewriteHtml,
           },
           {
             src: 'components/event-banner/*.css',
@@ -232,6 +271,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/event-list/*.html',
             dest: 'components/event-list',
+            transform: rewriteHtml,
           },
           {
             src: 'components/event-list/*.css',
@@ -240,6 +280,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/board/*.html',
             dest: 'components/board',
+            transform: rewriteHtml,
           },
           {
             src: 'components/board/*.css',
@@ -248,6 +289,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'components/board-list/*.html',
             dest: 'components/board-list',
+            transform: rewriteHtml,
           },
           {
             src: 'components/board-list/*.css',
@@ -256,30 +298,30 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/home.html',
             dest: 'pages',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/home.css',
             dest: 'pages',
           },
-          // Copy product list content fragment
           {
             src: 'pages/product/list-content.html',
             dest: 'pages/product',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/product/list.css',
             dest: 'pages/product',
           },
-          // Copy product list full page (rewrite .ts → .js)
           {
             src: 'pages/product/list.html',
             dest: 'pages/product',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/product/detail-content.html',
             dest: 'pages/product',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/product/detail.css',
@@ -288,12 +330,12 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/product/detail.html',
             dest: 'pages/product',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/notices-content.html',
             dest: 'pages/board',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/notices.css',
@@ -302,22 +344,22 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/board/notices.html',
             dest: 'pages/board',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/article-content.html',
             dest: 'pages/board',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/article.html',
             dest: 'pages/board',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/list-content.html',
             dest: 'pages/board',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/board/list.css',
@@ -326,12 +368,12 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/board/list.html',
             dest: 'pages/board',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/account/index-content.html',
             dest: 'pages/account',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/account/index.css',
@@ -340,12 +382,12 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/account/index.html',
             dest: 'pages/account',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/my/orders-content.html',
             dest: 'pages/my',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/my/orders.css',
@@ -354,12 +396,12 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/my/orders.html',
             dest: 'pages/my',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/event/event-content.html',
             dest: 'pages/event',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/event/event.css',
@@ -368,12 +410,12 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/event/event.html',
             dest: 'pages/event',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           {
             src: 'pages/event/list-content.html',
             dest: 'pages/event',
+            transform: rewriteHtml,
           },
           {
             src: 'pages/event/list.css',
@@ -382,8 +424,7 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
           {
             src: 'pages/event/list.html',
             dest: 'pages/event',
-            transform: (content: string) =>
-              content.replace(/src="([^"]+)\.ts"/g, 'src="$1.js"'),
+            transform: rewriteHtml,
           },
           // Copy global CSS
           {

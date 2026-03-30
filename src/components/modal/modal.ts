@@ -1,3 +1,5 @@
+declare const __BASE_PATH__: string;
+
 const CONTAINER_ID = 'modal-container';
 let cssLoaded = false;
 
@@ -6,7 +8,7 @@ function ensureCSS(): void {
   cssLoaded = true;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = '/components/modal/modal.css';
+  link.href = `${__BASE_PATH__}components/modal/modal.css`;
   link.dataset.componentStyle = 'modal';
   document.head.appendChild(link);
 }

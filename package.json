@@ -6,7 +6,8 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "postinstall": "cp node_modules/htmx.org/dist/htmx.min.js vendor/htmx.min.js"
+    "postinstall": "mkdir -p vendor && cp node_modules/htmx.org/dist/htmx.min.js vendor/htmx.min.js",
+    "build:ghpages": "VITE_BASE=/static-htmx-ecommerce/ vite build"
   },
   "devDependencies": {
     "embla-carousel": "^8.6.0",

@@ -1,3 +1,5 @@
+declare const __BASE_PATH__: string;
+
 // ============================================================
 // Types
 // ============================================================
@@ -21,74 +23,74 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: 'Smartphones',
-    href: '/pages/product/list.html?category=smartphones',
+    href: `${__BASE_PATH__}pages/product/list.html?category=smartphones`,
     children: [
-      { label: 'iPhone', href: '/pages/product/list.html?category=iphone' },
-      { label: 'Galaxy', href: '/pages/product/list.html?category=galaxy' },
-      { label: 'Pixel', href: '/pages/product/list.html?category=pixel' },
+      { label: 'iPhone', href: `${__BASE_PATH__}pages/product/list.html?category=iphone` },
+      { label: 'Galaxy', href: `${__BASE_PATH__}pages/product/list.html?category=galaxy` },
+      { label: 'Pixel', href: `${__BASE_PATH__}pages/product/list.html?category=pixel` },
     ],
   },
   {
     label: 'Tablets',
-    href: '/pages/product/list.html?category=tablets',
+    href: `${__BASE_PATH__}pages/product/list.html?category=tablets`,
     children: [
-      { label: 'iPad', href: '/pages/product/list.html?category=ipad' },
-      { label: 'Galaxy Tab', href: '/pages/product/list.html?category=galaxy-tab' },
+      { label: 'iPad', href: `${__BASE_PATH__}pages/product/list.html?category=ipad` },
+      { label: 'Galaxy Tab', href: `${__BASE_PATH__}pages/product/list.html?category=galaxy-tab` },
     ],
   },
   {
     label: 'Laptops',
-    href: '/pages/product/list.html?category=laptops',
+    href: `${__BASE_PATH__}pages/product/list.html?category=laptops`,
     children: [
-      { label: 'MacBook', href: '/pages/product/list.html?category=macbook' },
-      { label: 'Galaxy Book', href: '/pages/product/list.html?category=galaxy-book' },
-      { label: 'Surface', href: '/pages/product/list.html?category=surface' },
+      { label: 'MacBook', href: `${__BASE_PATH__}pages/product/list.html?category=macbook` },
+      { label: 'Galaxy Book', href: `${__BASE_PATH__}pages/product/list.html?category=galaxy-book` },
+      { label: 'Surface', href: `${__BASE_PATH__}pages/product/list.html?category=surface` },
     ],
   },
   {
     label: 'Wearables',
-    href: '/pages/product/list.html?category=wearables',
+    href: `${__BASE_PATH__}pages/product/list.html?category=wearables`,
     children: [
-      { label: 'Apple Watch', href: '/pages/product/list.html?category=apple-watch' },
-      { label: 'Galaxy Watch', href: '/pages/product/list.html?category=galaxy-watch' },
-      { label: 'AirPods', href: '/pages/product/list.html?category=airpods' },
+      { label: 'Apple Watch', href: `${__BASE_PATH__}pages/product/list.html?category=apple-watch` },
+      { label: 'Galaxy Watch', href: `${__BASE_PATH__}pages/product/list.html?category=galaxy-watch` },
+      { label: 'AirPods', href: `${__BASE_PATH__}pages/product/list.html?category=airpods` },
     ],
   },
   {
     label: 'Accessories',
-    href: '/pages/product/list.html?category=accessories',
+    href: `${__BASE_PATH__}pages/product/list.html?category=accessories`,
     children: [
-      { label: 'Cases', href: '/pages/product/list.html?category=cases' },
-      { label: 'Chargers', href: '/pages/product/list.html?category=chargers' },
-      { label: 'Cables', href: '/pages/product/list.html?category=cables' },
-      { label: 'Screen Protectors', href: '/pages/product/list.html?category=screen-protectors' },
+      { label: 'Cases', href: `${__BASE_PATH__}pages/product/list.html?category=cases` },
+      { label: 'Chargers', href: `${__BASE_PATH__}pages/product/list.html?category=chargers` },
+      { label: 'Cables', href: `${__BASE_PATH__}pages/product/list.html?category=cables` },
+      { label: 'Screen Protectors', href: `${__BASE_PATH__}pages/product/list.html?category=screen-protectors` },
     ],
   },
   {
     label: 'Audio',
-    href: '/pages/product/list.html?category=audio',
+    href: `${__BASE_PATH__}pages/product/list.html?category=audio`,
     children: [
-      { label: 'Headphones', href: '/pages/product/list.html?category=headphones' },
-      { label: 'Speakers', href: '/pages/product/list.html?category=speakers' },
-      { label: 'Earbuds', href: '/pages/product/list.html?category=earbuds' },
+      { label: 'Headphones', href: `${__BASE_PATH__}pages/product/list.html?category=headphones` },
+      { label: 'Speakers', href: `${__BASE_PATH__}pages/product/list.html?category=speakers` },
+      { label: 'Earbuds', href: `${__BASE_PATH__}pages/product/list.html?category=earbuds` },
     ],
   },
   {
     label: 'Event',
-    href: '/pages/event/list.html',
+    href: `${__BASE_PATH__}pages/event/list.html`,
     separator: true,
   },
   {
     label: 'Board',
-    href: '/pages/board/list.html',
+    href: `${__BASE_PATH__}pages/board/list.html`,
     children: [
-      { label: 'Notice', href: '/pages/board/notices.html' },
-      { label: 'FAQ', href: '/pages/board/list.html?type=faq' },
+      { label: 'Notice', href: `${__BASE_PATH__}pages/board/notices.html` },
+      { label: 'FAQ', href: `${__BASE_PATH__}pages/board/list.html?type=faq` },
     ],
   },
   {
     label: 'Service',
-    href: '/pages/service/faq.html',
+    href: `${__BASE_PATH__}pages/service/faq.html`,
   },
 ];
 
