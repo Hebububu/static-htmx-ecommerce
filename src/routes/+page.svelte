@@ -2,7 +2,7 @@
 	import { base } from '$app/paths';
 	import { products } from '$lib/data/products';
 	import { categories } from '$lib/data/categories';
-	import ProductCard from '$lib/components/product-card/ProductCard.svelte';
+	import ProductCard from '$lib/components/product/Card.svelte';
 </script>
 
 <svelte:head>
