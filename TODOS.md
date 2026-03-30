@@ -1,6 +1,7 @@
 # TODOS
 
 ## localStorage quota exceeded 에러 핸들링
+
 - **What:** cart store의 `$effect`에서 `localStorage.setItem()` 호출 시 QuotaExceededError를 처리
 - **Why:** localStorage 용량 초과 시 카트 데이터가 조용히 저장 실패. 사용자는 다음 방문 시 빈 장바구니를 보게 됨.
 - **Pros:** 데이터 손실 방지, 사용자에게 명확한 피드백

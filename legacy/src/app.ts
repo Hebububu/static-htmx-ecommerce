@@ -18,18 +18,18 @@ import { initReviewCarousel } from './components/review/review';
  * When the same component is loaded more than once, this removes the duplicate.
  */
 function deduplicateComponentStyles(): void {
-  const seen = new Set<string>();
+	const seen = new Set<string>();
 
-  document.querySelectorAll<HTMLLinkElement>('link[data-component-style]').forEach((link) => {
-    const styleId = link.dataset.componentStyle;
-    if (!styleId) return;
+	document.querySelectorAll<HTMLLinkElement>('link[data-component-style]').forEach((link) => {
+		const styleId = link.dataset.componentStyle;
+		if (!styleId) return;
 
-    if (seen.has(styleId)) {
-      link.remove();
-    } else {
-      seen.add(styleId);
-    }
-  });
+		if (seen.has(styleId)) {
+			link.remove();
+		} else {
+			seen.add(styleId);
+		}
+	});
 }
 
 // ============================================================
@@ -41,18 +41,18 @@ function deduplicateComponentStyles(): void {
  * Includes a retry button that re-fires the original htmx request (Option A).
  */
 function showComponentError(target: HTMLElement, path: string): void {
-  target.innerHTML = `
+	target.innerHTML = `
     <div class="error-state" role="alert" aria-live="assertive">
       <p class="error-state__message">콘텐츠를 불러오지 못했습니다.</p>
       <button class="error-state__retry" type="button">다시 시도</button>
     </div>
   `;
 
-  const retryBtn = target.querySelector<HTMLButtonElement>('.error-state__retry');
-  retryBtn?.addEventListener('click', () => {
-    target.innerHTML = '';
-    window.htmx.ajax('GET', path, { target, swap: 'innerHTML' });
-  });
+	const retryBtn = target.querySelector<HTMLButtonElement>('.error-state__retry');
+	retryBtn?.addEventListener('click', () => {
+		target.innerHTML = '';
+		window.htmx.ajax('GET', path, { target, swap: 'innerHTML' });
+	});
 }
 
 let networkBanner: HTMLElement | null = null;
@@ -65,16 +65,16 @@ let networkBannerPath: string | null = null;
  * - Retry button re-fires the failed htmx request.
  */
 function showNetworkBanner(path: string): void {
-  // Only show one banner at a time
-  if (networkBanner) return;
+	// Only show one banner at a time
+	if (networkBanner) return;
 
-  networkBannerPath = path;
+	networkBannerPath = path;
 
-  const banner = document.createElement('div');
-  banner.className = 'network-banner';
-  banner.setAttribute('role', 'alert');
-  banner.setAttribute('aria-live', 'assertive');
-  banner.innerHTML = `
+	const banner = document.createElement('div');
+	banner.className = 'network-banner';
+	banner.setAttribute('role', 'alert');
+	banner.setAttribute('aria-live', 'assertive');
+	banner.innerHTML = `
     <p class="network-banner__message">네트워크 연결을 확인해 주세요.</p>
     <div class="network-banner__actions">
       <button class="network-banner__retry" type="button">다시 시도</button>
@@ -82,45 +82,45 @@ function showNetworkBanner(path: string): void {
     </div>
   `;
 
-  document.body.prepend(banner);
-  networkBanner = banner;
+	document.body.prepend(banner);
+	networkBanner = banner;
 
-  // Force reflow then add visible class for CSS transition
-  requestAnimationFrame(() => {
-    banner.classList.add('network-banner--visible');
-  });
+	// Force reflow then add visible class for CSS transition
+	requestAnimationFrame(() => {
+		banner.classList.add('network-banner--visible');
+	});
 
-  function dismiss(): void {
-    if (!networkBanner) return;
-    networkBanner.classList.remove('network-banner--visible');
-    networkBanner.addEventListener('transitionend', () => networkBanner?.remove(), { once: true });
-    networkBanner = null;
-    networkBannerPath = null;
-    window.removeEventListener('online', onOnline);
-  }
+	function dismiss(): void {
+		if (!networkBanner) return;
+		networkBanner.classList.remove('network-banner--visible');
+		networkBanner.addEventListener('transitionend', () => networkBanner?.remove(), { once: true });
+		networkBanner = null;
+		networkBannerPath = null;
+		window.removeEventListener('online', onOnline);
+	}
 
-  function onOnline(): void {
-    dismiss();
-  }
+	function onOnline(): void {
+		dismiss();
+	}
 
-  // Auto-dismiss when network comes back
-  window.addEventListener('online', onOnline);
+	// Auto-dismiss when network comes back
+	window.addEventListener('online', onOnline);
 
-  // Manual dismiss
-  banner.querySelector('.network-banner__dismiss')?.addEventListener('click', dismiss);
+	// Manual dismiss
+	banner.querySelector('.network-banner__dismiss')?.addEventListener('click', dismiss);
 
-  // Retry: re-fire original request
-  banner.querySelector('.network-banner__retry')?.addEventListener('click', () => {
-    if (networkBannerPath) {
-      const savedPath = networkBannerPath;
-      dismiss();
-      // Re-trigger the failed request targeting the main content area as fallback
-      const target = document.getElementById('content');
-      if (target) {
-        window.htmx.ajax('GET', savedPath, { target, swap: 'innerHTML' });
-      }
-    }
-  });
+	// Retry: re-fire original request
+	banner.querySelector('.network-banner__retry')?.addEventListener('click', () => {
+		if (networkBannerPath) {
+			const savedPath = networkBannerPath;
+			dismiss();
+			// Re-trigger the failed request targeting the main content area as fallback
+			const target = document.getElementById('content');
+			if (target) {
+				window.htmx.ajax('GET', savedPath, { target, swap: 'innerHTML' });
+			}
+		}
+	});
 }
 
 // ============================================================
@@ -128,29 +128,36 @@ function showNetworkBanner(path: string): void {
 // ============================================================
 
 const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target as HTMLElement;
-      el.classList.add('is-visible');
-      revealObserver.unobserve(el);
-      // Release GPU layers after animation completes to free memory
-      el.addEventListener('animationend', () => { el.style.willChange = 'auto'; }, { once: true });
-    });
-  },
-  { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+	(entries) => {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) return;
+			const el = entry.target as HTMLElement;
+			el.classList.add('is-visible');
+			revealObserver.unobserve(el);
+			// Release GPU layers after animation completes to free memory
+			el.addEventListener(
+				'animationend',
+				() => {
+					el.style.willChange = 'auto';
+				},
+				{ once: true }
+			);
+		});
+	},
+	{ threshold: 0, rootMargin: '0px 0px -10% 0px' }
 );
 
 function observeRevealElements(root: ParentNode = document): void {
-  const elements = root instanceof HTMLElement && root.matches('[data-reveal]')
-    ? [root, ...Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))]
-    : Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
+	const elements =
+		root instanceof HTMLElement && root.matches('[data-reveal]')
+			? [root, ...Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))]
+			: Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
 
-  elements.forEach((el) => {
-    if (!el.classList.contains('is-visible')) {
-      revealObserver.observe(el);
-    }
-  });
+	elements.forEach((el) => {
+		if (!el.classList.contains('is-visible')) {
+			revealObserver.observe(el);
+		}
+	});
 }
 
 // ============================================================
@@ -158,23 +165,23 @@ function observeRevealElements(root: ParentNode = document): void {
 // ============================================================
 
 function initAccountSidebar(root: HTMLElement): void {
-  const sidebar = root.matches?.('.account-sidebar')
-    ? root
-    : root.querySelector<HTMLElement>('.account-sidebar');
-  if (!sidebar) return;
+	const sidebar = root.matches?.('.account-sidebar')
+		? root
+		: root.querySelector<HTMLElement>('.account-sidebar');
+	if (!sidebar) return;
 
-  const links = sidebar.querySelectorAll<HTMLAnchorElement>('.account-sidebar__link');
-  const currentPath = window.location.pathname;
+	const links = sidebar.querySelectorAll<HTMLAnchorElement>('.account-sidebar__link');
+	const currentPath = window.location.pathname;
 
-  links.forEach((link) => {
-    const isMatch = link.pathname === currentPath;
-    link.classList.toggle('is-active', isMatch);
-    if (isMatch) {
-      link.setAttribute('aria-current', 'page');
-    } else {
-      link.removeAttribute('aria-current');
-    }
-  });
+	links.forEach((link) => {
+		const isMatch = link.pathname === currentPath;
+		link.classList.toggle('is-active', isMatch);
+		if (isMatch) {
+			link.setAttribute('aria-current', 'page');
+		} else {
+			link.removeAttribute('aria-current');
+		}
+	});
 }
 
 // ============================================================
@@ -184,24 +191,24 @@ function initAccountSidebar(root: HTMLElement): void {
 let revealTimeout: ReturnType<typeof setTimeout>;
 
 document.body.addEventListener('htmx:afterSwap', () => {
-  deduplicateComponentStyles();
-  clearTimeout(revealTimeout);
-  revealTimeout = setTimeout(() => observeRevealElements(document), 100);
+	deduplicateComponentStyles();
+	clearTimeout(revealTimeout);
+	revealTimeout = setTimeout(() => observeRevealElements(document), 100);
 });
 
 document.body.addEventListener('htmx:load', (event) => {
-  const loadedEl = (event as HtmxLoadEvent).detail.elt;
+	const loadedEl = (event as HtmxLoadEvent).detail.elt;
 
-  if (loadedEl instanceof HTMLElement) {
-    initAccountSidebar(loadedEl);
-    initBannerCarousel(loadedEl);
-    initCategorySidebar(loadedEl);
-    initEventListCountdown();
-    initProductCarousel(loadedEl);
-    initProductDetail(loadedEl);
-    initQuickMenu(loadedEl);
-    initReviewCarousel(loadedEl);
-  }
+	if (loadedEl instanceof HTMLElement) {
+		initAccountSidebar(loadedEl);
+		initBannerCarousel(loadedEl);
+		initCategorySidebar(loadedEl);
+		initEventListCountdown();
+		initProductCarousel(loadedEl);
+		initProductDetail(loadedEl);
+		initQuickMenu(loadedEl);
+		initReviewCarousel(loadedEl);
+	}
 });
 
 /**
@@ -209,21 +216,21 @@ document.body.addEventListener('htmx:load', (event) => {
  * Replace the failed component area with an inline error state.
  */
 document.body.addEventListener('htmx:responseError', (event) => {
-  const { target, requestConfig } =
-    (event as HTMLElementEventMap['htmx:responseError']).detail as unknown as {
-      target: HTMLElement;
-      requestConfig: HtmxRequestConfig;
-    };
+	const { target, requestConfig } = (event as HTMLElementEventMap['htmx:responseError'])
+		.detail as unknown as {
+		target: HTMLElement;
+		requestConfig: HtmxRequestConfig;
+	};
 
-  if (target instanceof HTMLElement) {
-    showComponentError(target, requestConfig.path);
-  }
+	if (target instanceof HTMLElement) {
+		showComponentError(target, requestConfig.path);
+	}
 });
 
 /**
  * Network-level failure (offline, timeout) — global banner.
  */
 document.body.addEventListener('htmx:sendError', (event) => {
-  const { requestConfig } = (event as HTMLElementEventMap['htmx:sendError']).detail;
-  showNetworkBanner(requestConfig.path);
+	const { requestConfig } = (event as HTMLElementEventMap['htmx:sendError']).detail;
+	showNetworkBanner(requestConfig.path);
 });

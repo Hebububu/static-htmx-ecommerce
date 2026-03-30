@@ -19,12 +19,15 @@
 		/>
 	</div>
 	<div class="p-3 md:p-4">
-		<h3 class="text-sm font-medium line-clamp-2 mb-1 group-hover:text-(--color-accent) transition-colors">
+		<h3
+			class="text-sm font-medium line-clamp-2 mb-1 group-hover:text-(--color-accent) transition-colors"
+		>
 			{product.name}
 		</h3>
 		<div class="flex items-center gap-1 mb-2">
 			<span class="text-xs text-amber-500">{'★'.repeat(Math.round(product.rating))}</span>
-			<span class="text-xs text-(--color-text-muted)">({product.reviewCount.toLocaleString()})</span>
+			<span class="text-xs text-(--color-text-muted)">({product.reviewCount.toLocaleString()})</span
+			>
 		</div>
 		<div class="flex items-baseline gap-2">
 			{#if product.originalPrice}

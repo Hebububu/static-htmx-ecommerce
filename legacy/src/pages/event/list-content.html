@@ -1,22 +1,22 @@
-<link rel="stylesheet" href="/components/breadcrumb/breadcrumb.css" data-component-style="breadcrumb" />
+<link
+	rel="stylesheet"
+	href="/components/breadcrumb/breadcrumb.css"
+	data-component-style="breadcrumb"
+/>
 <link rel="stylesheet" href="/pages/event/list.css" data-component-style="event-list-page" />
 
 <div class="event-list-page" data-reveal>
+	<div class="event-list-page__main container">
+		<nav class="breadcrumb" aria-label="Breadcrumb">
+			<a class="breadcrumb__link" href="/">Home</a>
+			<i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
+			<span class="breadcrumb__current" aria-current="page">Events</span>
+		</nav>
 
-  <div class="event-list-page__main container">
-
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a class="breadcrumb__link" href="/">Home</a>
-      <i class="ph ph-caret-right breadcrumb__separator" aria-hidden="true"></i>
-      <span class="breadcrumb__current" aria-current="page">Events</span>
-    </nav>
-
-    <div
-      hx-get="/components/event-list/event-list.html"
-      hx-trigger="load"
-      hx-swap="innerHTML"
-    ></div>
-
-  </div>
-
+		<div
+			hx-get="/components/event-list/event-list.html"
+			hx-trigger="load"
+			hx-swap="innerHTML"
+		></div>
+	</div>
 </div>

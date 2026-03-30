@@ -12,8 +12,7 @@
 	let addedToCart = $state(false);
 
 	const allOptionsSelected = $derived(
-		!product.options?.length ||
-			product.options.every((opt) => selectedOptions[opt.name])
+		!product.options?.length || product.options.every((opt) => selectedOptions[opt.name])
 	);
 
 	function selectOption(name: string, value: string) {
@@ -66,7 +65,11 @@
 <div class="max-w-(--container-max) mx-auto px-4 md:px-6 pb-16">
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 		<div class="aspect-square bg-white rounded-(--radius-lg) overflow-hidden shadow-(--shadow-sm)">
-			<img src="{base}{product.image}" alt={product.name} class="w-full h-full object-contain p-8" />
+			<img
+				src="{base}{product.image}"
+				alt={product.name}
+				class="w-full h-full object-contain p-8"
+			/>
 		</div>
 
 		<div class="flex flex-col">
@@ -81,11 +84,15 @@
 
 			<div class="flex items-baseline gap-3 mb-6">
 				{#if product.originalPrice}
-					<span class="text-lg text-(--color-error) font-bold">{formatDiscount(product.originalPrice, product.price)}%</span>
+					<span class="text-lg text-(--color-error) font-bold"
+						>{formatDiscount(product.originalPrice, product.price)}%</span
+					>
 				{/if}
 				<span class="text-2xl font-bold">{formatPrice(product.price)}</span>
 				{#if product.originalPrice}
-					<span class="text-sm text-(--color-text-muted) line-through">{formatPrice(product.originalPrice)}</span>
+					<span class="text-sm text-(--color-text-muted) line-through"
+						>{formatPrice(product.originalPrice)}</span
+					>
 				{/if}
 			</div>
 
@@ -103,8 +110,8 @@
 									<button
 										class="px-4 py-2 text-sm border rounded-(--radius-sm) transition-colors
 											{selectedOptions[option.name] === value
-												? 'border-(--color-accent) text-(--color-accent) bg-blue-50'
-												: 'border-(--color-border) hover:border-(--color-secondary)'}"
+											? 'border-(--color-accent) text-(--color-accent) bg-blue-50'
+											: 'border-(--color-border) hover:border-(--color-secondary)'}"
 										onclick={() => selectOption(option.name, value)}
 									>
 										{value}
@@ -119,9 +126,19 @@
 			<div class="flex items-center gap-3 mb-6">
 				<span class="text-sm font-medium">Qty</span>
 				<div class="flex items-center border border-(--color-border) rounded-(--radius-sm)">
-					<button class="w-9 h-9 flex items-center justify-center text-lg hover:bg-neutral-50 disabled:opacity-30" onclick={decrementQty} disabled={quantity <= 1} aria-label="Decrease quantity">−</button>
+					<button
+						class="w-9 h-9 flex items-center justify-center text-lg hover:bg-neutral-50 disabled:opacity-30"
+						onclick={decrementQty}
+						disabled={quantity <= 1}
+						aria-label="Decrease quantity">−</button
+					>
 					<span class="w-10 text-center text-sm font-medium">{quantity}</span>
-					<button class="w-9 h-9 flex items-center justify-center text-lg hover:bg-neutral-50 disabled:opacity-30" onclick={incrementQty} disabled={quantity >= 99} aria-label="Increase quantity">+</button>
+					<button
+						class="w-9 h-9 flex items-center justify-center text-lg hover:bg-neutral-50 disabled:opacity-30"
+						onclick={incrementQty}
+						disabled={quantity >= 99}
+						aria-label="Increase quantity">+</button
+					>
 				</div>
 			</div>
 
@@ -141,7 +158,10 @@
 						Add to Cart
 					{/if}
 				</button>
-				<a href="{base}/cart/" class="px-6 py-3 text-sm font-medium border border-(--color-border) rounded-(--radius-base) hover:bg-neutral-50 transition-colors">
+				<a
+					href="{base}/cart/"
+					class="px-6 py-3 text-sm font-medium border border-(--color-border) rounded-(--radius-base) hover:bg-neutral-50 transition-colors"
+				>
 					Cart
 				</a>
 			</div>

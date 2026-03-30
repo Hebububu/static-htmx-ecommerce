@@ -17,7 +17,11 @@
 			<div>
 				<h4 class="font-medium mb-3 text-sm">Customer Service</h4>
 				<ul class="space-y-2 text-sm text-neutral-400">
-					<li><a href="{base}/board/notices/" class="hover:text-white transition-colors">Announcements</a></li>
+					<li>
+						<a href="{base}/board/notices/" class="hover:text-white transition-colors"
+							>Announcements</a
+						>
+					</li>
 					<li><a href="{base}/board/" class="hover:text-white transition-colors">FAQ</a></li>
 					<li>Phone: 1-800-000-0000</li>
 					<li>Email: help@ecommerce.com</li>
@@ -27,10 +31,20 @@
 			<div>
 				<h4 class="font-medium mb-3 text-sm">Shopping Guide</h4>
 				<ul class="space-y-2 text-sm text-neutral-400">
-					<li><a href="{base}/board/" class="hover:text-white transition-colors">Terms of Service</a></li>
-					<li><a href="{base}/board/" class="hover:text-white transition-colors">Privacy Policy</a></li>
-					<li><a href="{base}/board/" class="hover:text-white transition-colors">Shipping Info</a></li>
-					<li><a href="{base}/board/" class="hover:text-white transition-colors">Returns & Exchanges</a></li>
+					<li>
+						<a href="{base}/board/" class="hover:text-white transition-colors">Terms of Service</a>
+					</li>
+					<li>
+						<a href="{base}/board/" class="hover:text-white transition-colors">Privacy Policy</a>
+					</li>
+					<li>
+						<a href="{base}/board/" class="hover:text-white transition-colors">Shipping Info</a>
+					</li>
+					<li>
+						<a href="{base}/board/" class="hover:text-white transition-colors"
+							>Returns & Exchanges</a
+						>
+					</li>
 				</ul>
 			</div>
 
@@ -43,7 +57,9 @@
 						placeholder="Email address"
 						class="flex-1 px-3 py-2 text-sm bg-neutral-800 border border-neutral-700 rounded-(--radius-sm) text-white placeholder:text-neutral-500 focus:outline-none focus:border-(--color-accent)"
 					/>
-					<button class="px-4 py-2 text-sm font-medium bg-(--color-accent) rounded-(--radius-sm) hover:opacity-90 transition-opacity">
+					<button
+						class="px-4 py-2 text-sm font-medium bg-(--color-accent) rounded-(--radius-sm) hover:opacity-90 transition-opacity"
+					>
 						Subscribe
 					</button>
 				</div>

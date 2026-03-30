@@ -1,4 +1,4 @@
 .product-detail-page {
-  padding-block: clamp(2rem, 5vw, 3rem);
-  overflow-x: clip;
+	padding-block: clamp(2rem, 5vw, 3rem);
+	overflow-x: clip;
 }

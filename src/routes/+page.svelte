@@ -24,7 +24,17 @@
 				class="inline-flex items-center gap-2 px-6 py-3 bg-(--color-accent) text-white font-medium rounded-(--radius-base) hover:opacity-90 transition-opacity"
 			>
 				Shop Now
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
+				>
 			</a>
 		</div>
 	</div>
@@ -67,7 +77,10 @@
 		<div class="bg-white rounded-(--radius-base) p-6 shadow-(--shadow-sm)">
 			<div class="flex items-center justify-between mb-4">
 				<h3 class="font-bold">Announcements</h3>
-				<a href="{base}/board/notices/" class="text-xs text-(--color-text-muted) hover:text-(--color-accent)">More</a>
+				<a
+					href="{base}/board/notices/"
+					class="text-xs text-(--color-text-muted) hover:text-(--color-accent)">More</a
+				>
 			</div>
 			<ul class="space-y-3 text-sm">
 				<li class="flex justify-between">

@@ -10,10 +10,12 @@ export const products: Product[] = [
 		category: 'phones',
 		rating: 4.8,
 		reviewCount: 2847,
-		description:
-			'Powered by the A17 Pro chip. Titanium design, 48MP camera system, USB-C support.',
+		description: 'Powered by the A17 Pro chip. Titanium design, 48MP camera system, USB-C support.',
 		options: [
-			{ name: 'Color', values: ['Natural Titanium', 'Blue Titanium', 'White Titanium', 'Black Titanium'] },
+			{
+				name: 'Color',
+				values: ['Natural Titanium', 'Blue Titanium', 'White Titanium', 'Black Titanium']
+			},
 			{ name: 'Storage', values: ['128GB', '256GB', '512GB', '1TB'] }
 		],
 		inStock: true
@@ -29,7 +31,10 @@ export const products: Product[] = [
 		reviewCount: 1923,
 		description: 'Galaxy AI powered. Built-in S Pen, 200MP camera.',
 		options: [
-			{ name: 'Color', values: ['Titanium Gray', 'Titanium Black', 'Titanium Violet', 'Titanium Yellow'] },
+			{
+				name: 'Color',
+				values: ['Titanium Gray', 'Titanium Black', 'Titanium Violet', 'Titanium Yellow']
+			},
 			{ name: 'Storage', values: ['256GB', '512GB', '1TB'] }
 		],
 		inStock: true

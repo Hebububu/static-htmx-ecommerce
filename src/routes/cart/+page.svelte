@@ -22,7 +22,10 @@
 			<div class="text-5xl mb-4">🛒</div>
 			<h2 class="text-lg font-medium mb-2">Your cart is empty</h2>
 			<p class="text-sm text-(--color-text-muted) mb-6">Add some products you love.</p>
-			<a href="{base}/products/" class="inline-flex px-6 py-3 text-sm font-medium text-white bg-(--color-primary) rounded-(--radius-base) hover:opacity-90 transition-opacity">
+			<a
+				href="{base}/products/"
+				class="inline-flex px-6 py-3 text-sm font-medium text-white bg-(--color-primary) rounded-(--radius-base) hover:opacity-90 transition-opacity"
+			>
 				Continue Shopping
 			</a>
 		</div>
@@ -31,8 +34,13 @@
 			<div class="lg:col-span-2">
 				<div class="bg-white rounded-(--radius-base) shadow-(--shadow-sm) p-4 md:p-6">
 					<div class="flex items-center justify-between pb-3 border-b border-(--color-border) mb-2">
-						<span class="text-sm text-(--color-text-muted)">{cart.items.length} item{cart.items.length > 1 ? 's' : ''}</span>
-						<button class="text-xs text-(--color-text-muted) hover:text-(--color-error) transition-colors" onclick={() => cart.clear()}>
+						<span class="text-sm text-(--color-text-muted)"
+							>{cart.items.length} item{cart.items.length > 1 ? 's' : ''}</span
+						>
+						<button
+							class="text-xs text-(--color-text-muted) hover:text-(--color-error) transition-colors"
+							onclick={() => cart.clear()}
+						>
 							Clear All
 						</button>
 					</div>
@@ -65,10 +73,16 @@
 							<dd class="text-lg font-bold text-(--color-accent)">{formatPrice(cart.total)}</dd>
 						</div>
 					</dl>
-					<a href="{base}/checkout/" class="block w-full mt-6 py-3 text-center text-sm font-bold text-white bg-(--color-primary) rounded-(--radius-base) hover:opacity-90 transition-opacity">
+					<a
+						href="{base}/checkout/"
+						class="block w-full mt-6 py-3 text-center text-sm font-bold text-white bg-(--color-primary) rounded-(--radius-base) hover:opacity-90 transition-opacity"
+					>
 						Checkout
 					</a>
-					<a href="{base}/products/" class="block w-full mt-2 py-3 text-center text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors">
+					<a
+						href="{base}/products/"
+						class="block w-full mt-2 py-3 text-center text-sm font-medium text-(--color-text-muted) hover:text-(--color-text) transition-colors"
+					>
 						Continue Shopping
 					</a>
 				</div>

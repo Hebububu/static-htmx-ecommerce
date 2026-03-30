@@ -28,20 +28,36 @@
 		<h3 class="text-sm font-medium truncate">{item.name}</h3>
 		{#if item.options}
 			<p class="text-xs text-(--color-text-muted) mt-0.5">
-				{Object.entries(item.options).map(([k, v]) => `${k}: ${v}`).join(' / ')}
+				{Object.entries(item.options)
+					.map(([k, v]) => `${k}: ${v}`)
+					.join(' / ')}
 			</p>
 		{/if}
 
 		<div class="flex items-center justify-between mt-3">
 			<div class="flex items-center border border-(--color-border) rounded-(--radius-sm)">
-				<button class="w-7 h-7 flex items-center justify-center text-sm hover:bg-neutral-50 disabled:opacity-30" onclick={decrement} disabled={item.quantity <= 1} aria-label="Decrease quantity">−</button>
+				<button
+					class="w-7 h-7 flex items-center justify-center text-sm hover:bg-neutral-50 disabled:opacity-30"
+					onclick={decrement}
+					disabled={item.quantity <= 1}
+					aria-label="Decrease quantity">−</button
+				>
 				<span class="w-8 text-center text-xs font-medium">{item.quantity}</span>
-				<button class="w-7 h-7 flex items-center justify-center text-sm hover:bg-neutral-50 disabled:opacity-30" onclick={increment} disabled={item.quantity >= 99} aria-label="Increase quantity">+</button>
+				<button
+					class="w-7 h-7 flex items-center justify-center text-sm hover:bg-neutral-50 disabled:opacity-30"
+					onclick={increment}
+					disabled={item.quantity >= 99}
+					aria-label="Increase quantity">+</button
+				>
 			</div>
 
 			<div class="flex items-center gap-3">
 				<span class="text-sm font-bold">{formatPrice(item.price * item.quantity)}</span>
-				<button class="text-xs text-(--color-text-muted) hover:text-(--color-error) transition-colors" onclick={remove} aria-label="Remove {item.name}">
+				<button
+					class="text-xs text-(--color-text-muted) hover:text-(--color-error) transition-colors"
+					onclick={remove}
+					aria-label="Remove {item.name}"
+				>
 					Remove
 				</button>
 			</div>
