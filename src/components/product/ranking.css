@@ -58,7 +58,6 @@
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s;
 }
 
 .ranking__wish {
@@ -76,12 +75,11 @@
   color: #312a23;
   font-size: 1rem;
   cursor: pointer;
-  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 .ranking__wish:hover {
   color: #a04545;
-  border-color: rgba(160, 69, 69, 0.32);
   background-color: #fff8f7;
 }
 

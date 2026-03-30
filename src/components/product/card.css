@@ -6,12 +6,11 @@
   border-radius: 28px;
   background: linear-gradient(180deg, #fffdfa 0%, #ffffff 100%);
   box-shadow: 0 20px 45px rgba(84, 69, 55, 0.08);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base);
 }
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 54px rgba(84, 69, 55, 0.12);
 }
 
 .product-card__media {
@@ -30,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 16px 32px rgba(67, 57, 46, 0.16));
+  filter: drop-shadow(0 16px 32px rgba(67, 57, 46, 0.12));
 }
 
 .product-card__body {
@@ -123,18 +122,12 @@
   background-color: rgba(255, 255, 255, 0.86);
   color: #312a23;
   box-shadow: 0 10px 24px rgba(58, 52, 46, 0.08);
-  transition:
-    transform var(--transition-fast),
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    background-color var(--transition-fast);
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
 .product-card__wish:hover {
   transform: translateY(-2px);
   color: #a04545;
-  border-color: rgba(160, 69, 69, 0.32);
-  background-color: #fff8f7;
 }
 
 .product-card__wish i {

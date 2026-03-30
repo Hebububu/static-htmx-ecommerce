@@ -109,11 +109,10 @@
   background: #f0eeeb;
   font-size: 2rem;
   color: #3a342e;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .notice-service__icon-item:hover .notice-service__icon-circle {
-  background-color: #e8e5e0;
   transform: translateY(-2px);
 }
 

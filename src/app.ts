@@ -131,8 +131,11 @@ const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
+      const el = entry.target as HTMLElement;
+      el.classList.add('is-visible');
+      revealObserver.unobserve(el);
+      // Release GPU layers after animation completes to free memory
+      el.addEventListener('animationend', () => { el.style.willChange = 'auto'; }, { once: true });
     });
   },
   { threshold: 0, rootMargin: '0px 0px -10% 0px' },

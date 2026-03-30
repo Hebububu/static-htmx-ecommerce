@@ -39,6 +39,7 @@
 .header__banner-track {
   height: 160px; /* 4 slides × 40px */
   animation: banner-scroll 13.6s infinite;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -382,9 +383,11 @@
 /* Transitions enabled after JS init to prevent flash on page load */
 .header__drawer--ready .header__drawer-inner {
   transition: transform var(--transition-base);
+  will-change: transform;
 }
 .header__drawer--ready .header__drawer-backdrop {
   transition: opacity var(--transition-base);
+  will-change: opacity;
 }
 
 .header__drawer[aria-hidden='false'] .header__drawer-inner {

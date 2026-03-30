@@ -28,12 +28,11 @@
   border-radius: 12px;
   font-size: 1.35rem;
   cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 
 .quick-menu__btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .quick-menu__btn--neutral {

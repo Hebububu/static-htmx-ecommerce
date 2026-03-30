@@ -8,6 +8,7 @@
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: opacity var(--transition-base, 250ms ease);
+  will-change: opacity;
 }
 
 .modal-backdrop--visible {
@@ -25,6 +26,7 @@
   gap: var(--space-6);
   transform: translateY(12px);
   transition: transform var(--transition-base, 250ms ease);
+  will-change: transform;
 }
 
 .modal-backdrop--visible .modal-card {
@@ -90,6 +92,7 @@
   border-radius: 8px;
   transform: scale(0.95);
   transition: transform var(--transition-base, 250ms ease);
+  will-change: transform;
 }
 
 .modal-backdrop--visible .modal-lightbox__image {
