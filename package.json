@@ -1,21 +1,36 @@
 {
-  "name": "ecommerce-static",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "postinstall": "mkdir -p vendor && cp node_modules/htmx.org/dist/htmx.min.js vendor/htmx.min.js",
-    "build:ghpages": "VITE_BASE=/static-htmx-ecommerce/ vite build"
-  },
-  "devDependencies": {
-    "embla-carousel": "^8.6.0",
-    "embla-carousel-autoplay": "^8.6.0",
-    "htmx.org": "^2.0.4",
-    "terser": "^5.46.0",
-    "typescript": "^5.0.0",
-    "vite": "^7.3.1",
-    "vite-plugin-static-copy": "^3.2.0"
-  }
+	"name": "svelte-ecommerce",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.50.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/vite": "^4.2.2",
+		"@testing-library/svelte": "^5.3.1",
+		"embla-carousel": "^8.6.0",
+		"embla-carousel-autoplay": "^8.6.0",
+		"eslint": "^10.1.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.16.0",
+		"jsdom": "^29.0.1",
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.5.1",
+		"svelte": "^5.54.0",
+		"svelte-check": "^4.4.2",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1",
+		"vitest": "^4.1.2"
+	}
 }
