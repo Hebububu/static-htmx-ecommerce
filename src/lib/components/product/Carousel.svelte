@@ -18,11 +18,7 @@
 				import('embla-carousel-autoplay')
 			]);
 
-			api = EmblaCarousel(
-				viewportEl,
-				{ loop: true, align: 'start' },
-				[Autoplay({ delay: 4500 })]
-			);
+			api = EmblaCarousel(viewportEl, { loop: true, align: 'start' }, [Autoplay({ delay: 4500 })]);
 			emblaApi = api;
 		})();
 

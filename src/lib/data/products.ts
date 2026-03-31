@@ -95,4 +95,3 @@ export const products: Product[] = [
 export function getProduct(id: string): Product | undefined {
 	return products.find((p) => p.id === id);
 }
-
